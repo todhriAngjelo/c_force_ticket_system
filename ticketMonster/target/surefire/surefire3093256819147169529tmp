@@ -1,0 +1,8 @@
+#surefire
+#Thu Jun 21 18:58:55 EEST 2018
+maven.ext.class.path=C\:\\Program Files\\NetBeans 8.2\\java\\maven-nblib\\netbeans-eventspy.jar
+user.dir=D\:\\Documents\\CodingHive\\JavaEE\\Instructions\\jee-course-project\\ticketMonster
+file.encoding=UTF-8
+localRepository=C\:\\Users\\Kleanthis Sakarikos\\.m2\\repository
+netbeans.deploy=true
+basedir=D\:\\Documents\\CodingHive\\JavaEE\\Instructions\\jee-course-project\\ticketMonster
