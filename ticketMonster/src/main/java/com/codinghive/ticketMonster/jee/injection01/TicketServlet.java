@@ -36,6 +36,7 @@ public class TicketServlet extends HttpServlet {
     private TicketDaoLocal ticketDao;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
     		throws ServletException, IOException, ParseException {
+       
         
         String action = request.getParameter("action");
         String ticketIdStr = request.getParameter("ticketId");
@@ -52,18 +53,38 @@ public class TicketServlet extends HttpServlet {
             user_Id = Integer.parseInt(user_IdStr);
         }
         
+        
         Ticket ticket = new Ticket(ticketId, t_title, t_price, user_Id);
         
         if ("Add".equalsIgnoreCase(action)) {
            ticketDao.addTicket(ticket);
         }
         
+         Ticket t1 = new Ticket(1, "Rocky 1", "15", 0);
+        ticketDao.addTicket(t1);
+        Ticket t2 = new Ticket(2, "Rocky 2", "15", 0);
+        ticketDao.addTicket(t2);
+        Ticket t3 = new Ticket(3, "Rocky 3", "15", 0);
+        ticketDao.addTicket(t3);
+        Ticket t4 = new Ticket(4, "Rocky 4", "15", 0);
+        ticketDao.addTicket(t4);
+        Ticket t5 = new Ticket(5, "Rocky 5", "15", 0);
+        ticketDao.addTicket(t5);
+        Ticket t6 = new Ticket(6, "Rocky 6", "15", 0);
+        ticketDao.addTicket(t6);
+        Ticket t7 = new Ticket(7, "Rocky 7", "15", 0);
+        ticketDao.addTicket(t7);
+        Ticket t8 = new Ticket(8, "Rocky 8", "18", 0);
+        ticketDao.addTicket(t8);
+        Ticket t9 = new Ticket(9, "Rocky 9", "7", 0);
+        ticketDao.addTicket(t9);
+        
          request.setAttribute("ticket", ticket);
         request.setAttribute("allTicket", ticketDao.getAllTicket());
         request.getRequestDispatcher("index.jsp").forward(request, response);
     
     
-    
+        
     
     
    

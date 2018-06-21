@@ -5,7 +5,9 @@
  */
 package com.codinghive.ticketMonster.jee.model;
 
+import com.codinghive.ticketMonster.jee.dao.TicketDaoLocal;
 import java.io.Serializable;
+import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -89,6 +91,7 @@ public class Ticket implements Serializable {
         this.t_price = t_price;
         this.user_Id = user_Id;
     }
+  
     
     //Ticket t = new Ticket(1,"asfafas","21",1);
     
@@ -97,12 +100,12 @@ public class Ticket implements Serializable {
     
 //   END  Constructor ------------------------
     
+     
     
-
     @Override
     public String toString() {
         return "Users{" + "ticketId=" + ticketId + ", t_title='" + t_title + '\'' + ", t_price='" + t_price + '\''
-                + ", yearLevel=" + user_Id + '}';
+                + ", user_Id=" + user_Id + '}';
     }
     
 }

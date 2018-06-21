@@ -41,7 +41,7 @@
                 
         </table> 
         -->
-        <h1>Ticket Information</h1>
+    <h1>Ticket Information</h1>
         <form action="./TicketServlet" method="POST">
             <table>
                 <tr>
