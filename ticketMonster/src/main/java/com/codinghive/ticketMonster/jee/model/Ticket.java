@@ -32,7 +32,8 @@ public class Ticket implements Serializable {
         
     @Column
     private int user_Id; 
-
+    
+    
     
 
   
@@ -88,11 +89,15 @@ public class Ticket implements Serializable {
         this.t_price = t_price;
         this.user_Id = user_Id;
     }
-   
+    
+    //Ticket t = new Ticket(1,"asfafas","21",1);
+    
     public Ticket() {
     }
     
 //   END  Constructor ------------------------
+    
+    
 
     @Override
     public String toString() {
