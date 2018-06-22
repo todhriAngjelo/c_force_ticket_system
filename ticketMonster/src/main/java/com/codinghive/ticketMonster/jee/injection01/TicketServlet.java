@@ -36,6 +36,7 @@ public class TicketServlet extends HttpServlet {
     private TicketDaoLocal ticketDao;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
     		throws ServletException, IOException, ParseException {
+       
         
         String action = request.getParameter("action");
         String ticketIdStr = request.getParameter("ticketId");
@@ -52,18 +53,23 @@ public class TicketServlet extends HttpServlet {
             user_Id = Integer.parseInt(user_IdStr);
         }
         
+        
         Ticket ticket = new Ticket(ticketId, t_title, t_price, user_Id);
         
         if ("Add".equalsIgnoreCase(action)) {
            ticketDao.addTicket(ticket);
         }
+        else if ("Show".equalsIgnoreCase(action)) {
+            ticket= (Ticket) ticketDao.getAllTicket();
+        }
+   
         
          request.setAttribute("ticket", ticket);
         request.setAttribute("allTicket", ticketDao.getAllTicket());
         request.getRequestDispatcher("index.jsp").forward(request, response);
     
     
-    
+        
     
     
    
@@ -96,6 +102,7 @@ public class TicketServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
+            
         } catch (ParseException ex) {
             Logger.getLogger(TicketServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

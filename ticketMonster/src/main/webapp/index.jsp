@@ -8,40 +8,8 @@
     </head>
     <body>
        
-        
-        
-        <!--newwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
-        
-<!--        <h1>User Information</h1>
-        <form action="./UsersServlet" method="POST">
-            <table>
-                <tr>
-                    <td>User ID:</td>
-                    <td><input type="text" name="userId" value="${users.userId}" /></td>
-                    
-                </tr>
-                
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" name="action" value="Add" />
-                    </td>                
-                </tr>            
-            </table>
-        </form>        
-        <br>
-        <table border="1">
-            <th>ID</th>
-             <c:forEach items="${allUsers}" var="us">
-                <tr>
-                    <td>${us.userId}</td>
-                   
-                </tr>
-            </c:forEach>
-                
-                
-        </table> 
-        -->
-        <h1>Ticket Information</h1>
+      <%--<jsp:include page="/TicketServlet" />--%>
+    <h1>Ticket Information</h1>
         <form action="./TicketServlet" method="POST">
             <table>
                 <tr>
@@ -65,6 +33,8 @@
                 <tr>
                     <td colspan="2">
                         <input type="submit" name="action" value="Add" />
+                        <input type="submit" name="action" value="Show"  />
+
                        
                     </td>                
                 </tr>            
@@ -76,7 +46,7 @@
             <th>Ticket Title</th>
             <th>Ticket Price</th>
             <th>User ID</th>
-            
+
             <c:forEach items="${allTicket}" var="tick">
                 <tr>
                     <td>${tick.ticketId}</td>
