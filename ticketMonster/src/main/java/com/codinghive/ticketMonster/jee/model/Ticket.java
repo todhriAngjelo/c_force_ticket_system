@@ -22,10 +22,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-@NamedQueries({ @NamedQuery(name = "Ticket.getAll", query = "SELECT e FROM Ticket e") })
+@NamedQueries({ @NamedQuery(name = "Ticket.getAll", query = "SELECT e FROM Ticket") })
 public class Ticket implements Serializable {
     
-    
+    // Create Columns
 	@Id
     @Column
     private int ticketId;

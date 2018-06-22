@@ -16,7 +16,6 @@ import javax.persistence.Query;
 import org.slf4j.LoggerFactory;
 
 @Stateless(name="TicketDAO")
-
 public class TicketDao implements TicketDaoLocal{
     private static final Logger LOGGER = LoggerFactory.getLogger(TicketDao.class);
 
@@ -27,7 +26,7 @@ public class TicketDao implements TicketDaoLocal{
        
    
     @Override
-    public void addTicket(Ticket ticket) {
+    public void addTicket(Ticket ticket) {  
     	em.getTransaction().begin();
 		
         em.persist(ticket);
