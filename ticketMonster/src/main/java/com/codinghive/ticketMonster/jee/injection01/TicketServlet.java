@@ -59,6 +59,9 @@ public class TicketServlet extends HttpServlet {
         if ("Add".equalsIgnoreCase(action)) {
            ticketDao.addTicket(ticket);
         }
+        else if ("Show".equalsIgnoreCase(action)) {
+            ticket= (Ticket) ticketDao.getAllTicket();
+        }
    
         
          request.setAttribute("ticket", ticket);
