@@ -1,0 +1,2 @@
+REMOTE BRANCH DELETE
+https://www.git-tower.com/learn/git/faq/delete-remote-branch
