@@ -4,18 +4,12 @@
         <servlet-name>TicketServlet</servlet-name>
         <servlet-class>com.codinghive.ticketMonster.jee.injection01.TicketServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>insertServlet</servlet-name>
-        <servlet-class>com.codinghive.ticketMonster.jee.injection01.insertServlet</servlet-class>
-    </servlet>
+    
     <servlet-mapping>
         <servlet-name>TicketServlet</servlet-name>
         <url-pattern>/TicketServlet</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>insertServlet</servlet-name>
-        <url-pattern>/insertServlet</url-pattern>
-    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

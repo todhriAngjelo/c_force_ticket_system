@@ -24,7 +24,7 @@ public class TicketDao implements TicketDaoLocal{
 
     @PersistenceContext(unitName = STUDENT_PU)
     private EntityManager em;
-
+       
    
     @Override
     public void addTicket(Ticket ticket) {
@@ -81,4 +81,5 @@ Query query = em.createQuery("Select e FROM Users e WHERE e.userId = :id");
 
     	
     	return result;    }
+    
 }
