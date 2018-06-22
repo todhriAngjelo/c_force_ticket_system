@@ -60,11 +60,11 @@ public class TicketServlet extends HttpServlet {
            ticketDao.addTicket(ticket);         // kalei tin addTicket sto TicketDao.java
         }
         else if ("Show".equalsIgnoreCase(action)) {// an epilexthei Show sti forma
-            ticket= (Ticket) ticketDao.getAllTicket();  // kalei tin getAllTicket sto TicketDao.java
+            ticketDao.getAllTicket();  // kalei tin getAllTicket sto TicketDao.java
         }
    
         
-         request.setAttribute("ticket", ticket);
+        request.setAttribute("ticket", ticket);
         request.setAttribute("allTicket", ticketDao.getAllTicket());
         request.getRequestDispatcher("index.jsp").forward(request, response);
     
