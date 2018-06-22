@@ -15,14 +15,19 @@ import java.util.List;
 public interface TicketDaoLocal {
     void addTicket(Ticket ticket);
     
-    Ticket getTicket(int ticketId);
     
     List<Ticket> getAllTicket();
 
-    int getAllLazy();
-
-    List<Ticket> search();
     
-    Object searchSingle();
+//    Ticket getTicket(int ticketId);
+
+    
+//    int getAllLazy();
+
+//    List<Ticket> search();
+    
+//    Object searchSingle();
+
+    public void addTickToArrayList(Ticket ticket);
 
 }

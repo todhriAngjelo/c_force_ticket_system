@@ -58,9 +58,12 @@ public class TicketServlet extends HttpServlet {
         
         if ("Add".equalsIgnoreCase(action)) { // an epilexthei ADD sti forma
            ticketDao.addTicket(ticket);         // kalei tin addTicket sto TicketDao.java
+           ticketDao.addTickToArrayList(ticket);
+
         }
         else if ("Show".equalsIgnoreCase(action)) {// an epilexthei Show sti forma
-            ticketDao.getAllTicket();  // kalei tin getAllTicket sto TicketDao.java
+            //ticketDao.getAllTicket();  // kalei tin getAllTicket sto TicketDao.java
+            // WE CAN SIMPLY LEAVE THE IF SENTENCE NULL ( WITHOUT ANY CONTENT ) BECUASE ONCE LINE 71 IS CALLED AND TICKETDAO IS SERVED TO THE .JSP FILE
         }
    
         
