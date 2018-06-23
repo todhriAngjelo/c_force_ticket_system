@@ -30,4 +30,6 @@ public interface TicketDaoLocal {
 
     public void addTickToArrayList(Ticket ticket);
 
+    public String getJsonsFromDB();
+
 }
