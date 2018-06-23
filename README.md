@@ -10,7 +10,7 @@ Where can this be found : "C:\Users\Todhri Angjelo\Desktop\c_force_ticket_system
 
 Short Description followind progress : leaved it blank because after exiting the if sentence getAllTickets will be invoked anyways and ticketDao will get the required data to serve to .jsp file
 
-#Date:23 June 2018, SometimeDuringTheEvening
+# Date:23 June 2018, SometimeDuringTheEvening
 
 Progress Title : addded addTickToArrayList() method
 
