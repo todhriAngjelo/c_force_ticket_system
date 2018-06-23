@@ -1,2 +1,17 @@
 REMOTE BRANCH DELETE
 https://www.git-tower.com/learn/git/faq/delete-remote-branch
+
+
+EVERYDAY WORKFLOW
+
+git remote add master https://github.com/todhriAngjelo/c_force_ticket_system/
+git pull master (branch you wanna downlaod)
+git add , git commit -m "Message"
+git push master (branch you wanna push)
+
+
+git branch -a 
+view all branches
+
+git checkout (branchName) 
+change branch
