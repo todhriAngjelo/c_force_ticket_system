@@ -7,21 +7,13 @@ package com.codinghive.ticketMonster.jee.dao;
 
 import com.codinghive.ticketMonster.jee.model.Ticket;
 import com.google.gson.Gson;
-import java.io.FileWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-//import javax.persistence.Query;
 import org.slf4j.LoggerFactory;
-import org.json.simple.*;
 
 
 @Stateless(name="TicketDAO")
@@ -38,6 +30,7 @@ public class TicketDao implements TicketDaoLocal{
     ArrayList<Ticket> ticketArrayList = new ArrayList<Ticket>();
    
     @Override //name says it its self.
+    //edw ginonte add ta ticket mesw entity manager
     public void addTicket(Ticket ticket) {  
     	em.getTransaction().begin();
 		
@@ -48,59 +41,56 @@ public class TicketDao implements TicketDaoLocal{
 
         LOGGER.info("Created Ticket:" + ticket);
     }
+    //method gia na ginonte delete ta ticket mesw entity manager
+    //public void addTicket(Ticket ticket) {  
+    //	em.getTransaction().begin();
+		
+    //    em.persist(ticket);
+        
+        
+    //    em.getTransaction().commit();
+
+    //    LOGGER.info("Deleted Ticket:" + ticket);
+   // }  
     
     
     @Override
     public String getJsonsFromDB(){
         //necessary for appropriate json formating
         String returnString = "[";
-        
         //Gson object initiation so i can call json methods
         Gson gson = new Gson();
-        
         //list with tickets that i will store my ticket objects and toJson() transform them
         List<Ticket> ticketObj = getAllTicket();
-        
         //loop for number of tickets found in database
         for (int i=0; i < ticketObj.size(); i++){
             // 2. Java object to JSON, and assign to a String
-            String jsonInString = gson.toJson(ticketObj.get(i));
-            
+            String jsonInString = gson.toJson(ticketObj.get(i)); 
             //necessary for appropriate json formating
             if (i!=ticketObj.size()-1){
                 returnString = returnString.concat(jsonInString+",");
             }else{
                 returnString = returnString.concat(jsonInString);
-
             }
             LOGGER.info("Printing jsonString:" + jsonInString);
- 
-        }
+         }
         //necessary for appropriate json formating
         returnString = returnString.concat("]");
-
         LOGGER.info("Printing unitedAllTogether:" + returnString); 
         return returnString;
     }
     
-            
+    //getAllTickets into a list   
     @Override
     public List<Ticket> getAllTicket() {
         return em.createNamedQuery("Ticket.getAll").getResultList();
     }
-    
     //creating array List for Tickets
     @Override
     public void addTickToArrayList(Ticket ticket) {
         ticketArrayList.add(ticket);
-        LOGGER.info("Addd Ticket" + ticket + "to array listen:");
-        
+        LOGGER.info("Added Ticket" + ticket + "to array:");  
     }
-
-
-
-
-    
 }
 //-------------------------------------------
 //    @Override

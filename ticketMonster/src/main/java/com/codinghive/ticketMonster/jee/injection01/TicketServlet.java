@@ -66,6 +66,10 @@ public class TicketServlet extends HttpServlet {
             // WE CAN SIMPLY LEAVE THE IF SENTENCE NULL ( WITHOUT ANY CONTENT ) BECUASE ONCE LINE 71 IS CALLED AND TICKETDAO IS SERVED TO THE .JSP FILE
             ticketDao.getJsonsFromDB();
         }
+        //edw prepei na oristei h me8odos gia delete ta ticket
+        //else if ("Delete".equalsIgnoreCase(action)) {// an epilexthei Show sti forma
+        //    ticketDao.deleteTicket(ticket);
+        //}
    
         
         request.setAttribute("ticket", ticket);
