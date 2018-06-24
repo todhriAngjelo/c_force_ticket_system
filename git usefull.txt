@@ -7,11 +7,11 @@ EVERYDAY WORKFLOW
 git remote add master https://github.com/todhriAngjelo/c_force_ticket_system/
 git pull master (branch you wanna downlaod)
 git add , git commit -m "Message"
-git push master (branch you wanna push)
+git push master (branch you sdsadasdasdaswanna push)
 
 
 git branch -a 
 view all branches
 
 git checkout (branchName) 
-change branch
+change brancsadasdasdshsdadadas
