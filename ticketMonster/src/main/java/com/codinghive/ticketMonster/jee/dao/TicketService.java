@@ -30,7 +30,7 @@ public class TicketService {
                 
                 
 		String result = ticketObj;
-          
+                
 		
                 return "<allticket>" + "<ctofoutput>" + result + "</ctofoutput>" + "</allticket>";
       }

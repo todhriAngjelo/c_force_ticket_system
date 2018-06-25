@@ -6,15 +6,13 @@
 package com.codinghive.ticketMonster.jee.dao;
 
 import com.codinghive.ticketMonster.jee.model.Ticket;
-<<<<<<< HEAD
 import com.google.gson.Gson;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-=======
->>>>>>> 5608ed46856814f0f14de84641f9a0692464f010
+
 import java.util.ArrayList;
 import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -35,12 +33,8 @@ public class TicketDao implements TicketDaoLocal{
 
     @PersistenceContext(unitName = STUDENT_PU)
     private EntityManager em;
-       
-<<<<<<< HEAD
-    //initialisation of ticketArrayList used in addTickToArrayList();
-=======
+
     
->>>>>>> 5608ed46856814f0f14de84641f9a0692464f010
     ArrayList<Ticket> ticketArrayList = new ArrayList<Ticket>();
    
     @Override //name says it its self.
@@ -56,7 +50,6 @@ public class TicketDao implements TicketDaoLocal{
     }
     
     
-<<<<<<< HEAD
     @Override
     public String getJsonsFromDB(){
         //necessary for appropriate json formating
@@ -91,8 +84,6 @@ public class TicketDao implements TicketDaoLocal{
     }
     
             
-=======
->>>>>>> 5608ed46856814f0f14de84641f9a0692464f010
     @Override
     public List<Ticket> getAllTicket() {
         return em.createNamedQuery("Ticket.getAll").getResultList();
