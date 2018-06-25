@@ -29,7 +29,10 @@ public interface TicketDaoLocal {
 //    Object searchSingle();
 
     public void addTickToArrayList(Ticket ticket);
+<<<<<<< HEAD
 
     public String getJsonsFromDB();
+=======
+>>>>>>> 5608ed46856814f0f14de84641f9a0692464f010
 
 }
