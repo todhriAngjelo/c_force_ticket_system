@@ -3,6 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
+	
+        
+	
+
+
 
 	<parent>
 		<groupId>com.codinghive.examples.jee</groupId>
@@ -16,7 +21,69 @@
 	<packaging>war</packaging>
 
 	<dependencies>
+            
+            <dependency>
+             
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+			<version>3.3.1</version>
+		</dependency>
 		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-bundle</artifactId>
+			<version>1.19.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20170516</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.19.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-core</artifactId>
+			<version>1.19.4</version>
+		</dependency>
+                
+             <dependency>
+
+                    <groupId>jboss</groupId>
+                    <artifactId>jboss-client</artifactId>
+                    <version>4.0.2</version>
+            </dependency>
+
+
+                <dependency>
+                        <groupId>com.fasterxml.jackson.jr</groupId>
+                        <artifactId>jackson-jr-all</artifactId>
+                        <version>2.9.6</version>
+                </dependency>
+
+
+                <dependency>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-databind</artifactId>
+                        <version>2.7.4</version>
+                        <type>jar</type>
+                </dependency>
+<!--	 <dependency>
+	  <groupId>caja</groupId>
+	  <artifactId>json_simple</artifactId>
+	  <version>r1</version>
+	  <type>jar</type>
+	 </dependency>-->
+         
+         <dependency>
+    <groupId>org.codehaus.jackson</groupId>
+    <artifactId>jackson-mapper-asl</artifactId>
+    <version>1.9.13</version>
+</dependency>
+         
+	 <dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-web-api</artifactId>
 		</dependency>
@@ -48,6 +115,7 @@
     <groupId>com.google.code.gson</groupId>
     <artifactId>gson</artifactId>
     <version>2.8.5</version>
+    <type>jar</type>
 </dependency>
 
 	</dependencies>
