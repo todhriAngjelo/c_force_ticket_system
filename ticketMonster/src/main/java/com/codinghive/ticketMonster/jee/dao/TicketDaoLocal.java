@@ -15,14 +15,24 @@ import java.util.List;
 public interface TicketDaoLocal {
     void addTicket(Ticket ticket);
     
-    Ticket getTicket(int ticketId);
     
     List<Ticket> getAllTicket();
 
-    int getAllLazy();
-
-    List<Ticket> search();
     
-    Object searchSingle();
+//    Ticket getTicket(int ticketId);
+
+    
+//    int getAllLazy();
+
+//    List<Ticket> search();
+    
+//    Object searchSingle();
+
+    public void addTickToArrayList(Ticket ticket);
+<<<<<<< HEAD
+
+    public String getJsonsFromDB();
+=======
+>>>>>>> 5608ed46856814f0f14de84641f9a0692464f010
 
 }

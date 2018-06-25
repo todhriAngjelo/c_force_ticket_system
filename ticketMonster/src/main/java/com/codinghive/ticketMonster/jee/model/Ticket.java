@@ -25,7 +25,7 @@ import javax.persistence.Table;
 @NamedQueries({ @NamedQuery(name = "Ticket.getAll", query = "SELECT e FROM Ticket e") })
 public class Ticket implements Serializable {
     
-    
+    // Create Columns
 	@Id
     @Column
     private int ticketId;

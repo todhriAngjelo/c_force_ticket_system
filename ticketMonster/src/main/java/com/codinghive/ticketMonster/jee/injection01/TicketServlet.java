@@ -38,33 +38,40 @@ public class TicketServlet extends HttpServlet {
     		throws ServletException, IOException, ParseException {
        
         
-        String action = request.getParameter("action");
-        String ticketIdStr = request.getParameter("ticketId");
-        int ticketId = 0;
+        String action = request.getParameter("action"); // an parei action apo tin forma sto index
+        String ticketIdStr = request.getParameter("ticketId"); // pernei string ticket
+        int ticketId = 0;                                                               
         if (ticketIdStr != null && !ticketIdStr.equals("")) {
-            ticketId = Integer.parseInt(ticketIdStr);
+            ticketId = Integer.parseInt(ticketIdStr);           //pernaei to string sto ticketID
         }
-        String t_title = request.getParameter("t_title");
-        String t_price = request.getParameter("t_price");
+        String t_title = request.getParameter("t_title");       //dexete dedomena    
+        String t_price = request.getParameter("t_price");       //dexete dedomena  
         
-        String user_IdStr = request.getParameter("user_Id");
-        int user_Id = 0;
-        if (user_IdStr != null && !user_IdStr.equals("")) {
+        String user_IdStr = request.getParameter("user_Id");    //dexete dedomena  
+        int user_Id = 0;                                        //dexete dedomena  
+        if (user_IdStr != null && !user_IdStr.equals("")) {     //dexete dedomena  
             user_Id = Integer.parseInt(user_IdStr);
         }
         
         
-        Ticket ticket = new Ticket(ticketId, t_title, t_price, user_Id);
+        Ticket ticket = new Ticket(ticketId, t_title, t_price, user_Id); //pernaei stoixeia se ena Ticket object
         
-        if ("Add".equalsIgnoreCase(action)) {
-           ticketDao.addTicket(ticket);
+        if ("Add".equalsIgnoreCase(action)) { // an epilexthei ADD sti forma
+           ticketDao.addTicket(ticket);         // kalei tin addTicket sto TicketDao.java
+           ticketDao.addTickToArrayList(ticket);
+
         }
-        else if ("Show".equalsIgnoreCase(action)) {
-            ticket= (Ticket) ticketDao.getAllTicket();
+        else if ("Show".equalsIgnoreCase(action)) {// an epilexthei Show sti forma
+            //ticketDao.getAllTicket();  // kalei tin getAllTicket sto TicketDao.java
+            // WE CAN SIMPLY LEAVE THE IF SENTENCE NULL ( WITHOUT ANY CONTENT ) BECUASE ONCE LINE 71 IS CALLED AND TICKETDAO IS SERVED TO THE .JSP FILE
+<<<<<<< HEAD
+            ticketDao.getJsonsFromDB();
+=======
+>>>>>>> 5608ed46856814f0f14de84641f9a0692464f010
         }
    
         
-         request.setAttribute("ticket", ticket);
+        request.setAttribute("ticket", ticket);
         request.setAttribute("allTicket", ticketDao.getAllTicket());
         request.getRequestDispatcher("index.jsp").forward(request, response);
     
