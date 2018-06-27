@@ -29,11 +29,17 @@
                     <td>Ticket belong to id</td>
                     <td><input type="text" name="user_Id" value="${ticket.user_Id}" /></td>
                 </tr>
+                
+                 <tr>
+                    <td>Ticket is booked</td>
+                    <td><input type="text" name="t_booked" value="${ticket.t_booked}" /></td>
+                </tr>
                
                 <tr>
                     <td colspan="2">
                         <input type="submit" name="action" value="Add" />
                         <input type="submit" name="action" value="Show"  />
+                        <input type="submit" name="action" value="Search" />
 
                        
                     </td>                
@@ -46,7 +52,7 @@
             <th>Ticket Title</th>
             <th>Ticket Price</th>
             <th>User ID</th>
-            <th>Is Booked</th>
+            <th>Is Booked</th> 
 
             <c:forEach items="${allTicket}" var="tick">
                 <tr>
@@ -54,7 +60,7 @@
                     <td>${tick.t_title}</td>
                     <td>${tick.t_price}</td>
                     <td>${tick.user_Id}</td>
-                    <td>${tick.booked}</td>
+                    <td>${tick.t_booked}</td>
 
                 </tr>
             </c:forEach>

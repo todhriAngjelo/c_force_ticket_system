@@ -5,6 +5,7 @@
  */
 package com.codinghive.ticketMonster.jee.injection01;
 
+import com.codinghive.ticketMonster.jee.dao.TicketDao;
 import com.codinghive.ticketMonster.jee.dao.TicketDaoLocal;
 import com.codinghive.ticketMonster.jee.model.Ticket;
 import java.io.IOException;
@@ -33,7 +34,7 @@ public class TicketServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Inject
-    private TicketDaoLocal ticketDao;
+    private TicketDao ticketDao;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
     		throws ServletException, IOException, ParseException {
        
@@ -58,19 +59,17 @@ public class TicketServlet extends HttpServlet {
             booked = Integer.parseInt(bookedStr);
         }
         
-        
         Ticket ticket = new Ticket(ticketId, t_title, t_price, user_Id, booked); //pernaei stoixeia se ena Ticket object
         
         if ("Add".equalsIgnoreCase(action)) { // an epilexthei ADD sti forma
            ticketDao.addTicket(ticket);         // kalei tin addTicket sto TicketDao.java
-           ticketDao.addTickToArrayList(ticket);
+           //ticketDao.addTickToArrayList(ticket);
 
         }
         else if ("Show".equalsIgnoreCase(action)) {// an epilexthei Show sti forma
             //ticketDao.getAllTicket();  // kalei tin getAllTicket sto TicketDao.java
             // WE CAN SIMPLY LEAVE THE IF SENTENCE NULL ( WITHOUT ANY CONTENT ) BECUASE ONCE LINE 71 IS CALLED AND TICKETDAO IS SERVED TO THE .JSP FILE
             ticketDao.getJsonsFromDB();
-
         }
    
         

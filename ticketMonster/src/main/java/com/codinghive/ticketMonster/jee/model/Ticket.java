@@ -5,18 +5,12 @@
  */
 package com.codinghive.ticketMonster.jee.model;
 
-import com.codinghive.ticketMonster.jee.dao.TicketDao;
-import com.codinghive.ticketMonster.jee.dao.TicketDaoLocal;
-import com.codinghive.ticketMonster.jee.injection01.TicketServlet;
 import java.io.Serializable;
-import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Table;
 
 
@@ -26,7 +20,7 @@ import javax.persistence.Table;
 public class Ticket implements Serializable {
     
     // Create Columns
-	@Id
+    @Id
     @Column
     private int ticketId;
         
@@ -40,18 +34,9 @@ public class Ticket implements Serializable {
     private int user_Id; 
     
     @Column
-    private int booked;
-
-   
-
-    
-    
-    
-    
-
+    private int t_booked;    
   
     //    Getters ------------------------
-
     public int getTicketId() {
         return ticketId;
     }
@@ -66,19 +51,16 @@ public class Ticket implements Serializable {
 
     public int getUser_Id() {
         return user_Id;
-    }
-      
-    public int getBooked() {
-        return booked;
-    }
+    }   
+    
+     public int getT_booked() {
+        return t_booked;
+    }   
    //    END Getters ------------------------
 
- 
-
     
     
-   //    Setters ------------------------
-    
+   //    Setters ------------------------  
     public void setTicketId(int ticketId) {
         this.ticketId = ticketId;
     }
@@ -95,42 +77,39 @@ public class Ticket implements Serializable {
     public void setUser_Id(int user_Id) {    
         this.user_Id = user_Id;
     }
-
-    public void setBooked(int booked) {
-        this.booked = booked;
+    
+    public void setT_booked(int t_booked) {    
+        this.t_booked = t_booked;
     }
 //   END  Setters ------------------------
 
+
+//   Constructors ------------------------
     
-
-
-//   Constructor ------------------------
-
-    public Ticket(int ticketId, String t_title, String t_price, int user_Id, int booked) {
+    public Ticket(int ticketId, int t_booked) {
+        this.ticketId = ticketId;
+        this.t_booked = t_booked;
+    }
+    
+    public Ticket(int ticketId, String t_title, String t_price, int user_Id, int t_booked) {
         this.ticketId = ticketId;
         this.t_title = t_title;
         this.t_price = t_price;
         this.user_Id = user_Id;
-        this.booked = booked;
-    }
-    
-    //Ticket t = new Ticket(1,"asfafas","21",1);
+        this.t_booked = t_booked;
+    }       
     
     public Ticket() {
     }
-    
-    public Ticket(int ticketId, int i) {
-        this.ticketId = ticketId;
-        this.booked=i;
-    }
+     
+     
     
 //   END  Constructor ------------------------
-//    
     
     @Override
     public String toString() {
         return "Users{" + "ticketId=" + ticketId + ", t_title='" + t_title + '\'' + ", t_price='" + t_price + '\''
-                + ", user_Id=" + user_Id  + ", booked=" + booked+ '}';
+                + ", user_Id=" + user_Id + "tickedBooked=" + t_booked +  '}';
     }
 
     

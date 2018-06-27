@@ -32,5 +32,4 @@ public interface TicketDaoLocal {
 
     public String getJsonsFromDB();
 
-
 }
