@@ -52,9 +52,14 @@ public class TicketServlet extends HttpServlet {
         if (user_IdStr != null && !user_IdStr.equals("")) {     //dexete dedomena  
             user_Id = Integer.parseInt(user_IdStr);
         }
+        String bookedStr = request.getParameter("booked");    //dexete dedomena  
+        int booked = 0;                                        //dexete dedomena  
+        if (bookedStr != null && !bookedStr.equals("")) {     //dexete dedomena  
+            booked = Integer.parseInt(bookedStr);
+        }
         
         
-        Ticket ticket = new Ticket(ticketId, t_title, t_price, user_Id); //pernaei stoixeia se ena Ticket object
+        Ticket ticket = new Ticket(ticketId, t_title, t_price, user_Id, booked); //pernaei stoixeia se ena Ticket object
         
         if ("Add".equalsIgnoreCase(action)) { // an epilexthei ADD sti forma
            ticketDao.addTicket(ticket);         // kalei tin addTicket sto TicketDao.java

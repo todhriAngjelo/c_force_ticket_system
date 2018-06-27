@@ -39,6 +39,13 @@ public class Ticket implements Serializable {
     @Column
     private int user_Id; 
     
+    @Column
+    private int booked;
+
+   
+
+    
+    
     
     
 
@@ -60,8 +67,13 @@ public class Ticket implements Serializable {
     public int getUser_Id() {
         return user_Id;
     }
-    
+      
+    public int getBooked() {
+        return booked;
+    }
    //    END Getters ------------------------
+
+ 
 
     
     
@@ -84,21 +96,32 @@ public class Ticket implements Serializable {
         this.user_Id = user_Id;
     }
 
+    public void setBooked(int booked) {
+        this.booked = booked;
+    }
 //   END  Setters ------------------------
+
+    
 
 
 //   Constructor ------------------------
 
-    public Ticket(int ticketId, String t_title, String t_price, int user_Id) {
+    public Ticket(int ticketId, String t_title, String t_price, int user_Id, int booked) {
         this.ticketId = ticketId;
         this.t_title = t_title;
         this.t_price = t_price;
         this.user_Id = user_Id;
+        this.booked = booked;
     }
     
     //Ticket t = new Ticket(1,"asfafas","21",1);
     
     public Ticket() {
+    }
+    
+    public Ticket(int ticketId, int i) {
+        this.ticketId = ticketId;
+        this.booked=i;
     }
     
 //   END  Constructor ------------------------
@@ -107,7 +130,7 @@ public class Ticket implements Serializable {
     @Override
     public String toString() {
         return "Users{" + "ticketId=" + ticketId + ", t_title='" + t_title + '\'' + ", t_price='" + t_price + '\''
-                + ", user_Id=" + user_Id + '}';
+                + ", user_Id=" + user_Id  + ", booked=" + booked+ '}';
     }
 
     

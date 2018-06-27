@@ -46,6 +46,7 @@
             <th>Ticket Title</th>
             <th>Ticket Price</th>
             <th>User ID</th>
+            <th>Is Booked</th>
 
             <c:forEach items="${allTicket}" var="tick">
                 <tr>
@@ -53,6 +54,8 @@
                     <td>${tick.t_title}</td>
                     <td>${tick.t_price}</td>
                     <td>${tick.user_Id}</td>
+                    <td>${tick.booked}</td>
+
                 </tr>
             </c:forEach>
         </table>  
