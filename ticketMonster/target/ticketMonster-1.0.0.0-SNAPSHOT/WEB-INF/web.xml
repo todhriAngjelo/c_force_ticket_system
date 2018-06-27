@@ -2,14 +2,12 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
         <servlet-name>TicketServlet</servlet-name>
-        <servlet-class>com.codinghive.ticketMonster.jee.injection01.TicketServlet</servlet-class>
+        <servlet-class>com.codinghive.ticketMonster.jee.servlet.TicketServlet</servlet-class>
     </servlet>
-    
     <servlet-mapping>
         <servlet-name>TicketServlet</servlet-name>
         <url-pattern>/TicketServlet</url-pattern>
     </servlet-mapping>
-    
     <session-config>
         <session-timeout>
             30
@@ -18,4 +16,13 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <servlet>
+        <servlet-name>Jersey Web Application</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Jersey Web Application</servlet-name>
+        <url-pattern>/ticket/*</url-pattern>
+    </servlet-mapping>
 </web-app>
