@@ -8,10 +8,13 @@ package com.codinghive.ticketMonster.jee.rest;
 import com.codinghive.ticketMonster.jee.dao.TicketDao;
 import com.codinghive.ticketMonster.jee.model.Ticket;
 import javax.inject.Inject;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
     
@@ -22,27 +25,26 @@ public class TicketService {
     private TicketDao ticketDao;
 
     @GET
-    @Produces("application/xml")
+    @Produces("application/json")
     public String getAllTicketsJson() {
 
         String ticketObj = ticketDao.getJsonsFromDB();
 
         String result = ticketObj;
 
-        return "<allticket>" + "<ctofoutput>" + result + "</ctofoutput>" + "</allticket>";
+        return  result ;
   }
     
-   @POST
-   @Consumes("application/xml")
-   public String create(Ticket ticket)
-   {
-        ticketDao.addTicket(ticket);
-        
-        String ticketObj = ticketDao.getJsonsFromDB();
+    @PUT
+    @Produces("application/json")
+    @Path("/reserveTicket/{id:[0-9][0-9]*}")
+    public String reserveTicket(@PathParam("id") int id)
+    {
+        ticketDao.reserveTicket(id);
+        return ticketDao.getJsonsFromDB();
 
-        String result = ticketObj;
-        return "<allticket>" + "<ctofoutput>" + result + "</ctofoutput>" + "</allticket>";
-   }
+
+    }
    
  
         

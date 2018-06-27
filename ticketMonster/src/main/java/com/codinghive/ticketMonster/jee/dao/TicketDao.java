@@ -2,13 +2,12 @@ package com.codinghive.ticketMonster.jee.dao;
 
 import com.codinghive.ticketMonster.jee.model.Ticket;
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
 import org.slf4j.Logger;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import org.slf4j.LoggerFactory;
 
 
@@ -19,8 +18,6 @@ public class TicketDao{
     protected static final String STUDENT_PU = "mariaDB-eclipselink";
     @PersistenceContext(unitName = STUDENT_PU)
     private EntityManager em;
-    //initialisation of ticketArrayList used in addTickToArrayList();  
-    ArrayList<Ticket> ticketArrayList = new ArrayList<Ticket>();
        
 
     ////////////////////////////////////////
@@ -33,6 +30,23 @@ public class TicketDao{
         em.getTransaction().commit();
 
         LOGGER.info("Created Ticket:" + ticket);
+    }
+    
+    
+    ////////////////////////////////////////
+    public int reserveTicket(int id){
+        Ticket ticket = search(id);
+        int bookedFlag = ticket.getT_booked();
+        if (bookedFlag!=0){
+            LOGGER.info("Ticket:" + ticket + "is already reserved.");
+            return 0;
+        }else{
+            em.getTransaction().begin();
+            ticket.setT_booked(1);
+            LOGGER.info("Ticket:" + ticket + "is reserved now for user by ID: " + ticket.getTicketId());
+            em.getTransaction().commit();
+            return 1;
+        }
     }
     
     ////////////////////////////////////////    

@@ -78,7 +78,7 @@ public class Ticket implements Serializable {
         this.user_Id = user_Id;
     }
     
-    public void setT_boocked(int t_booked) {    
+    public void setT_booked(int t_booked) {    
         this.t_booked = t_booked;
     }
 //   END  Setters ------------------------
