@@ -17,23 +17,17 @@ public class TicketService {
     private TicketDaoLocal ticketDao;
     
 		@GET
-	@Produces("application/xml")
+	@Produces("application/json")
 	public String convertCtoF() {
  
 		
                   String ticketObj = ticketDao.getJsonsFromDB();
 
-        //list with tickets that i will store my ticket objects and toJson() transform them
-        
+        //list with tickets that i will store my ticket objects and toJson() transform them     
         //loop for number of tickets found in database
-        
-                
-                
 		String result = ticketObj;
-                
-		
-                return "<allticket>" + "<ctofoutput>" + result + "</ctofoutput>" + "</allticket>";
-      }
+                return  result ;
+           }
         
       	
-}
+ }
