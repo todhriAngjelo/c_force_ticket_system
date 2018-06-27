@@ -1,0 +1,46 @@
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+  <script type="text/javascript">
+    var myApp = angular.module('myApp',[]);
+
+      myApp.controller('GreetingController', ['$scope','$http', function($scope, $http) {
+        $scope.greeting = 'Hola!';
+        // Simple GET request example:
+        $http({
+          method: 'GET',
+          url: 'http://localhost:8080/home/ticket/allticket'
+              }).then(function successCallback(response) {
+                  // this callback will be called asynchronously
+                  // when the response is available
+                  $scope.allticket= response.data;
+
+                }, function errorCallback(response) {
+                  // called asynchronously if an error occurs
+                  // or server returns response with an error status.
+          });
+      }]);
+    </script>
+  <!-- <app-root></app-root> -->
+  
+    <table border="1">
+      <th>Ticket ID:</th>
+      <th>Ticket Title</th>
+      <th>Ticket Price</th>
+      <tr>
+      </tr>
+      </table><br><br>
+    <div ng-app="myApp" ng-controller="GreetingController">
+      {{Hello}}
+      JSON BELLOW:<br> 
+     <br>
+    <div ng-repeat="post1 in allticket">
+      <div>Id:{{post1.ticketId}}</div>
+      <div>Title:{{post1.t_title}}</div>
+      <div>Price:{{post1.t_price}}</div>
+      <br>
+    </div>
+ 
+</div>
