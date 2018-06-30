@@ -37,68 +37,58 @@ public class TicketServlet extends HttpServlet {
     private TicketDao ticketDao;
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(TicketServlet.class);
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
-    		throws ServletException, IOException, ParseException {
-       
-        
-        
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, ParseException {
+
         String action = request.getParameter("action"); // an parei action apo tin forma sto index
         String ticketIdStr = request.getParameter("ticketId"); // pernei string ticket
-        int ticketId = 0;                                                               
+        int ticketId = 0;
         if (ticketIdStr != null && !ticketIdStr.equals("")) {
             ticketId = Integer.parseInt(ticketIdStr);           //pernaei to string sto ticketID
         }
         String t_title = request.getParameter("t_title");       //dexete dedomena    
         String t_price = request.getParameter("t_price");       //dexete dedomena  
-        
+
         String user_IdStr = request.getParameter("user_Id");    //dexete dedomena  
         int user_Id = 0;                                        //dexete dedomena  
         if (user_IdStr != null && !user_IdStr.equals("")) {     //dexete dedomena  
             user_Id = Integer.parseInt(user_IdStr);
         }
-        
+
         String t_bookedStr = request.getParameter("t_booked");    //dexete dedomena  
         int t_booked = 0;                                        //dexete dedomena  
         if (t_bookedStr != null && !t_bookedStr.equals("")) {     //dexete dedomena  
             t_booked = Integer.parseInt(t_bookedStr);
         }
-        
-        
+
         Ticket ticket = new Ticket(ticketId, t_title, t_price, user_Id, t_booked); //pernaei stoixeia se ena Ticket object
-        
+
         if ("Add".equalsIgnoreCase(action)) { // an epilexthei ADD sti forma
             ticketDao.addTicket(ticket);         // kalei tin addTicket sto TicketDao.java
             request.setAttribute("ticket", ticket);
             request.setAttribute("allTicket", ticketDao.getAllTicket());
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
-        }
-        else if ("Show".equalsIgnoreCase(action)) {// an epilexthei Show sti forma
+        } else if ("Show".equalsIgnoreCase(action)) {// an epilexthei Show sti forma
             request.setAttribute("ticket", ticket);
             request.setAttribute("allTicket", ticketDao.getAllTicket());
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
         } else if ("Search".equalsIgnoreCase(action)) {// an epilexthei Search sti forma
-           
+
             // auto fill ticket form with the searchedId ticket info
-            request.setAttribute("ticket",ticketDao.search(ticketId));
+            request.setAttribute("ticket", ticketDao.search(ticketId));
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
         }
-   
-        
-    
-        
-    
-    
-   
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TicketServlet</title>");            
+            out.println("<title>Servlet TicketServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet TicketServlet at " + request.getContextPath() + "</h1>");
@@ -121,7 +111,7 @@ public class TicketServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-            
+
         } catch (ParseException ex) {
             Logger.getLogger(TicketServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

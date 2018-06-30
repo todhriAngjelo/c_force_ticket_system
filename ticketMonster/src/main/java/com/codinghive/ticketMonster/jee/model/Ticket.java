@@ -13,29 +13,29 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-
 @Entity
 @Table
-@NamedQueries({ @NamedQuery(name = "Ticket.getAll", query = "SELECT e FROM Ticket e") })
+@NamedQueries({
+    @NamedQuery(name = "Ticket.getAll", query = "SELECT e FROM Ticket e")})
 public class Ticket implements Serializable {
-    
+
     // Create Columns
     @Id
     @Column
     private int ticketId;
-        
+
     @Column
     private String t_title;
-        
+
     @Column
     private String t_price;
-        
+
     @Column
-    private int user_Id; 
-    
+    private int user_Id;
+
     @Column
-    private int t_booked;    
-  
+    private int t_booked;
+
     //    Getters ------------------------
     public int getTicketId() {
         return ticketId;
@@ -51,16 +51,14 @@ public class Ticket implements Serializable {
 
     public int getUser_Id() {
         return user_Id;
-    }   
-    
-     public int getT_booked() {
-        return t_booked;
-    }   
-   //    END Getters ------------------------
+    }
 
-    
-    
-   //    Setters ------------------------  
+    public int getT_booked() {
+        return t_booked;
+    }
+    //    END Getters ------------------------
+
+    //    Setters ------------------------  
     public void setTicketId(int ticketId) {
         this.ticketId = ticketId;
     }
@@ -73,47 +71,37 @@ public class Ticket implements Serializable {
         this.t_price = t_price;
     }
 
-
-    public void setUser_Id(int user_Id) {    
+    public void setUser_Id(int user_Id) {
         this.user_Id = user_Id;
     }
-    
-    public void setT_booked(int t_booked) {    
+
+    public void setT_booked(int t_booked) {
         this.t_booked = t_booked;
     }
 //   END  Setters ------------------------
 
-
 //   Constructors ------------------------
-    
     public Ticket(int ticketId, int t_booked) {
         this.ticketId = ticketId;
         this.t_booked = t_booked;
     }
-    
+
     public Ticket(int ticketId, String t_title, String t_price, int user_Id, int t_booked) {
         this.ticketId = ticketId;
         this.t_title = t_title;
         this.t_price = t_price;
         this.user_Id = user_Id;
         this.t_booked = t_booked;
-    }       
-    
+    }
+
     public Ticket() {
     }
-     
-     
-    
+
 //   END  Constructor ------------------------
-    
     @Override
     public String toString() {
         return "Users{" + "ticketId=" + ticketId + ", t_title='" + t_title + '\'' + ", t_price='" + t_price + '\''
-                + ", user_Id=" + user_Id + "tickedBooked=" + t_booked +  '}';
+                + ", user_Id=" + user_Id + "tickedBooked=" + t_booked + '}';
     }
 
-    
-   
-    
-    
 }

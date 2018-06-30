@@ -7,15 +7,15 @@
         <title>Tickets Information</title>
     </head>
     <body>
-       
-      <%--<jsp:include page="/TicketServlet" />--%>
-    <h1>Ticket Information</h1>
+
+        <%--<jsp:include page="/TicketServlet" />--%>
+        <h1>Ticket Information</h1>
         <form action="./TicketServlet" method="POST">
             <table>
                 <tr>
                     <td>Ticket ID:</td>
                     <td><input type="text" name="ticketId" value="${ticket.ticketId}" /></td>
-                    
+
                 </tr>
                 <tr>
                     <td>Ticket Title</td>
@@ -29,19 +29,19 @@
                     <td>Ticket belong to id</td>
                     <td><input type="text" name="user_Id" value="${ticket.user_Id}" /></td>
                 </tr>
-                
-                 <tr>
+
+                <tr>
                     <td>Ticket is booked</td>
                     <td><input type="text" name="t_booked" value="${ticket.t_booked}" /></td>
                 </tr>
-               
+
                 <tr>
                     <td colspan="2">
                         <input type="submit" name="action" value="Add" />
                         <input type="submit" name="action" value="Show"  />
                         <input type="submit" name="action" value="Search" />
 
-                       
+
                     </td>                
                 </tr>            
             </table>
@@ -65,10 +65,9 @@
                 </tr>
             </c:forEach>
         </table>  
-        
-        
-        
-        
-        
+
+
+
+
     </body>
 </html>

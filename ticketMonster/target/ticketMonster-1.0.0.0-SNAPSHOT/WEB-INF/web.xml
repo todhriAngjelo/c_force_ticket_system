@@ -25,4 +25,5 @@
         <servlet-name>Jersey Web Application</servlet-name>
         <url-pattern>/ticket/*</url-pattern>
     </servlet-mapping>
+    
 </web-app>
