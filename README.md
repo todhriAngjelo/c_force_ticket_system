@@ -13,7 +13,7 @@
 ###### Short Description following progress : probably it will be usefull for ticket info manipulation
 
 - Date:23 June 2018, 11PM
-###### **Progress Title : added getJsonsFromDB() method*
+###### *Progress Title : added getJsonsFromDB() method*
 ###### Where can this be found : "\ticketMonster\src\main\java\com\codinghive\ticketMonster\jee\dao\TicketDao.java"
 ###### Short Description following progress : added method that takesAllTickets() from db and converts them to a jsonString
 
