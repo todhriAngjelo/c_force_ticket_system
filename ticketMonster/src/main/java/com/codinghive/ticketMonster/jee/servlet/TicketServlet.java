@@ -40,28 +40,42 @@ public class TicketServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
 
-        String action = request.getParameter("action"); // an parei action apo tin forma sto index
-        String ticketIdStr = request.getParameter("ticketId"); // pernei string ticket
-        int ticketId = 0;
-        if (ticketIdStr != null && !ticketIdStr.equals("")) {
-            ticketId = Integer.parseInt(ticketIdStr);           //pernaei to string sto ticketID
+        //action
+        String action = request.getParameter("action"); 
+        
+        //ticked Id 
+        String t_idStr = request.getParameter("t_id"); 
+        int t_id = 0;
+        if (t_idStr != null && !t_idStr.equals("")) {
+            t_id = Integer.parseInt(t_idStr);           
         }
-        String t_title = request.getParameter("t_title");       //dexete dedomena    
-        String t_price = request.getParameter("t_price");       //dexete dedomena  
-
+        
+        
+        //ticket Title
+        String t_title = request.getParameter("t_title");       
+          
+        //ticket Price
+        String t_priceStr = request.getParameter("t_price");       
+        double t_price = 0;
+        if (t_priceStr != null && !t_priceStr.equals("")) {
+            t_price = Double.parseDouble(t_priceStr);          
+        }
+        
+        //user Id
         String user_IdStr = request.getParameter("user_Id");    //dexete dedomena  
         int user_Id = 0;                                        //dexete dedomena  
         if (user_IdStr != null && !user_IdStr.equals("")) {     //dexete dedomena  
             user_Id = Integer.parseInt(user_IdStr);
         }
 
+        //ticket Booked
         String t_bookedStr = request.getParameter("t_booked");    //dexete dedomena  
         int t_booked = 0;                                        //dexete dedomena  
         if (t_bookedStr != null && !t_bookedStr.equals("")) {     //dexete dedomena  
             t_booked = Integer.parseInt(t_bookedStr);
         }
 
-        Ticket ticket = new Ticket(ticketId, t_title, t_price, user_Id, t_booked); //pernaei stoixeia se ena Ticket object
+        Ticket ticket = new Ticket(t_id, t_title, t_price, user_Id, t_booked); //pernaei stoixeia se ena Ticket object
 
         if ("Add".equalsIgnoreCase(action)) { // an epilexthei ADD sti forma
             ticketDao.addTicket(ticket);         // kalei tin addTicket sto TicketDao.java
@@ -77,7 +91,7 @@ public class TicketServlet extends HttpServlet {
         } else if ("Search".equalsIgnoreCase(action)) {// an epilexthei Search sti forma
 
             // auto fill ticket form with the searchedId ticket info
-            request.setAttribute("ticket", ticketDao.search(ticketId));
+            request.setAttribute("ticket", ticketDao.search(t_id));
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
         }

@@ -22,13 +22,13 @@ public class Ticket implements Serializable {
     // Create Columns
     @Id
     @Column
-    private int ticketId;
+    private int t_id;
 
     @Column
     private String t_title;
 
     @Column
-    private String t_price;
+    private double t_price;
 
     @Column
     private int user_Id;
@@ -37,15 +37,15 @@ public class Ticket implements Serializable {
     private int t_booked;
 
     //    Getters ------------------------
-    public int getTicketId() {
-        return ticketId;
+    public int getT_id() {
+        return t_id;
     }
 
     public String getT_title() {
         return t_title;
     }
 
-    public String getT_price() {
+    public double getT_price() {
         return t_price;
     }
 
@@ -59,15 +59,15 @@ public class Ticket implements Serializable {
     //    END Getters ------------------------
 
     //    Setters ------------------------  
-    public void setTicketId(int ticketId) {
-        this.ticketId = ticketId;
+    public void setT_id(int t_id) {
+        this.t_id = t_id;
     }
 
     public void setT_title(String t_title) {
         this.t_title = t_title;
     }
 
-    public void setT_price(String t_price) {
+    public void setT_price(double t_price) {
         this.t_price = t_price;
     }
 
@@ -81,13 +81,13 @@ public class Ticket implements Serializable {
 //   END  Setters ------------------------
 
 //   Constructors ------------------------
-    public Ticket(int ticketId, int t_booked) {
-        this.ticketId = ticketId;
+    public Ticket(int t_id, int t_booked) {
+        this.t_id = t_id;
         this.t_booked = t_booked;
     }
 
-    public Ticket(int ticketId, String t_title, String t_price, int user_Id, int t_booked) {
-        this.ticketId = ticketId;
+    public Ticket(int t_id, String t_title, double t_price, int user_Id, int t_booked) {
+        this.t_id = t_id;
         this.t_title = t_title;
         this.t_price = t_price;
         this.user_Id = user_Id;
@@ -100,8 +100,8 @@ public class Ticket implements Serializable {
 //   END  Constructor ------------------------
     @Override
     public String toString() {
-        return "Users{" + "ticketId=" + ticketId + ", t_title='" + t_title + '\'' + ", t_price='" + t_price + '\''
-                + ", user_Id=" + user_Id + "tickedBooked=" + t_booked + '}';
+        return "Users{" + "t_id=" + t_id + ", t_title='" + t_title + '\'' + ", t_price='" + t_price + '\''
+                + ", user_Id=" + user_Id + ", t_booked=" + t_booked + '}';
     }
 
 }

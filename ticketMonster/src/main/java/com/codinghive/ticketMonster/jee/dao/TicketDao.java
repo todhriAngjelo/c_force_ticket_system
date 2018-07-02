@@ -8,6 +8,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.slf4j.LoggerFactory;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @Stateless(name = "TicketDAO")
 public class TicketDao {
@@ -39,18 +42,29 @@ public class TicketDao {
 
         LOGGER.info("Created Ticket:" + ticket);
     }
+    
+//    public int addTicketFromJson(){
+//        
+//    }
 
     ////////////////////////////////////////
     public int reserveTicket(int id) {
         Ticket ticket = search(id);
+        // if ticket id not found
+        if ( ticket == null){
+            LOGGER.info("Ticket with id:" + ticket.getUser_Id() + "doesn't exist.");
+            return 0;
+        }
         int bookedFlag = ticket.getT_booked();
         if (bookedFlag != 0) {
             LOGGER.info("Ticket:" + ticket + "is already reserved.");
             return 0;
         } else {
+            //communication with database is on
             em.getTransaction().begin();
             ticket.setT_booked(1);
-            LOGGER.info("Ticket:" + ticket + "is reserved now for user by ID: " + ticket.getTicketId());
+            LOGGER.info("Ticket:" + ticket + "is reserved now for user by ID: " + ticket.getT_id());
+            //communication with database is of
             em.getTransaction().commit();
             return 1;
         }
@@ -74,11 +88,11 @@ public class TicketDao {
             } else {
                 returnString = returnString.concat(jsonInString);
             }
-            LOGGER.info("Printing jsonString:" + jsonInString);
+            //            LOGGER.info("Printing jsonString:" + jsonInString);
         }
         //necessary for appropriate json formating
         returnString = returnString.concat("]");
-        LOGGER.info("Printing unitedAllTogether:" + returnString);
+        LOGGER.info("Printing DATABASE Json:" + returnString);
         return returnString;
     }
 
@@ -90,5 +104,18 @@ public class TicketDao {
     ////////////////////////////////////////
     public Ticket search(int id) {
         return em.find(Ticket.class, id);
+    }
+    
+    ////////////////////////////////////////
+    public void addTicketFromJson(String jsonStringData) {
+        
+        //Create Json Object from JsonStringData
+        final JSONObject obj = new JSONObject(jsonStringData);
+        //Create ticket object from JsonObject
+        Ticket ticket = new Ticket(obj.getInt("t_id"), obj.getString("t_title"), obj.getInt("t_price"), obj.getInt("user_id"), obj.getInt("t_booked"));
+        //Add Ticket Object to DB
+        addTicket(ticket);
+        LOGGER.info("Created and added ticket to database from REST endpoint");
+
     }
 }

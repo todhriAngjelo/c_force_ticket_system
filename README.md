@@ -28,3 +28,10 @@
 
 ### Date:27 June 2018, 11PM
 ###### Progress Title : added Collum Ticket_Booked into database with sql import
+
+### Date:2 July 2018
+###### Progress Title : added addTicket() Rest Endpoint for adding a ticket to the database
+###### Where can this be found : "\ticketMonster\src\main\java\com\codinghive\ticketMonster\jee\dao\TicketDao.java"
+###### Short Description following progress : Rest Endpoint Consumes JSON from Post request and creates a ticket to the database
+
+

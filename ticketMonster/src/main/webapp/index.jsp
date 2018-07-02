@@ -14,7 +14,7 @@
             <table>
                 <tr>
                     <td>Ticket ID:</td>
-                    <td><input type="text" name="ticketId" value="${ticket.ticketId}" /></td>
+                    <td><input type="text" name="t_id" value="${ticket.t_id}" /></td>
 
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
 
             <c:forEach items="${allTicket}" var="tick">
                 <tr>
-                    <td>${tick.ticketId}</td>
+                    <td>${tick.t_id}</td>
                     <td>${tick.t_title}</td>
                     <td>${tick.t_price}</td>
                     <td>${tick.user_Id}</td>
