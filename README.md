@@ -1,6 +1,6 @@
 # OMADA NUMERO 1 στο Project Και στην ΖΩΗ
 
-### PROGRESS INTO THE PROJECT STARTING FROM 22 June ( the logging started then not the implementation ( inside joke , not ))
+###( the logging started on 22of June )
 
 - Date:22 June 2018, SometimeDuringTheDay
 ###### *Progress Title : fixed showAllTickets method in student servlet*
