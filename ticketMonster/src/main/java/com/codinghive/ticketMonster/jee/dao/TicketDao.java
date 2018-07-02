@@ -8,8 +8,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.slf4j.LoggerFactory;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 @Stateless(name = "TicketDAO")
@@ -21,31 +19,17 @@ public class TicketDao {
     @PersistenceContext(unitName = STUDENT_PU)
     private EntityManager em;
 
-    ////////////////////////////////////////
-    //add ticket to the user ticketArray
-//    public void addTicketToUserArray(Ticket ticket, User user) {
-//        em.getTransaction().begin();
-//        em.persist(ticket);
-//        em.getTransaction().commit();
-//
-//        user.addTicketToArray(ticket);
-//        LOGGER.info("Created Ticket:" + ticket + "and added it to the ticketArrayList of the user with id: " + user.getU_id());
-//    }
 
     ////////////////////////////////////////
     public void addTicket(Ticket ticket) {
+        //communication with database is on
         em.getTransaction().begin();
-
+        //add ticket
         em.persist(ticket);
-
+        //communication with database is off
         em.getTransaction().commit();
-
         LOGGER.info("Created Ticket:" + ticket);
     }
-    
-//    public int addTicketFromJson(){
-//        
-//    }
 
     ////////////////////////////////////////
     public int reserveTicket(int id) {
@@ -98,17 +82,18 @@ public class TicketDao {
 
     ////////////////////////////////////////            
     public List<Ticket> getAllTicket() {
+        //returns all tickets in a List<ticket>
         return em.createNamedQuery("Ticket.getAll").getResultList();
     }
 
     ////////////////////////////////////////
     public Ticket search(int id) {
+        //returns ticket entity by id  = this.id
         return em.find(Ticket.class, id);
     }
     
     ////////////////////////////////////////
     public void addTicketFromJson(String jsonStringData) {
-        
         //Create Json Object from JsonStringData
         final JSONObject obj = new JSONObject(jsonStringData);
         //Create ticket object from JsonObject
@@ -116,6 +101,5 @@ public class TicketDao {
         //Add Ticket Object to DB
         addTicket(ticket);
         LOGGER.info("Created and added ticket to database from REST endpoint");
-
     }
 }
