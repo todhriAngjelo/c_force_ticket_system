@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- page title -->
+    <title>Tickets Projection</title>
+
+    <!-- add styles      -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    </head>
+<body>
+<!-- on load parse js data-->
+<!-- <body onload="parseJson()"> -->
+
+
+    <div class="container">
+        <div class="row">
+           
+        <div class="container">
+                <h1 style="text-align: center">Tickets Projection!</h1>
+        </div>
+        
+            <!-- button to load data -->
+            <div id="loadBtn" class="btn btn-primary">Load Data</div>
+        
+        
+        </div>
+        
+        <div  class="row wrap-table100 js-pscroll">
+            
+                        <table class="table table100 ver3 m-b-110 table">
+                            <thead>
+                                <tr>
+                                    <th>Ticket ID</th>
+                                    <th>Ticker Price</th>
+                                    <th>TIcket Name</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    
+    </div>
+
+  <button type="button" onclick="proceed();">CLICK ME</button> 
+
+<script>
+function proceed() {
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', 'http://localhost:8080/home/ticket/allticket/reserveTicket/1');
+        form.style.display = 'hidden';
+        document.body.appendChild(form)
+        form.submit();
+    }
+</script>
+
+</body>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="js/jsonParsing.js"></script>
+</html>
+
