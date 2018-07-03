@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.codinghive.ticketMonster.jee.rest;
 
 import com.codinghive.ticketMonster.jee.dao.TicketDao;
@@ -20,7 +16,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import org.slf4j.LoggerFactory;
 
-@Path("/allticket")
+@Path("/ticket")
 public class TicketService {
 
     //LOGGER object for console info logging
@@ -33,6 +29,7 @@ public class TicketService {
     //https://www.tutorialspoint.com/restful/restful_first_application.htm
     @GET
     @Produces("application/json")
+    @Path("/getAllTickets")
     public String getAllTicketsJson() {
         String ticketObj = ticketDao.getJsonsFromDB();
         String result = ticketObj;
@@ -64,9 +61,7 @@ public class TicketService {
             LOGGER.info("Error Parsing: - ");
         }
         LOGGER.info("Data Received: " + crunchifyBuilder.toString());
-
         ticketDao.addTicketFromJson(crunchifyBuilder.toString());
-
         // return HTTP response 200 in case of success
         return Response.status(200).entity(crunchifyBuilder.toString()).build();
     }        
