@@ -19,8 +19,8 @@ public class TicketDao {
     @PersistenceContext(unitName = STUDENT_PU)
     private EntityManager em;
 
-
-    ////////////////////////////////////////
+    //add ticket entity to the database
+    ///////////////////////////////////
     public void addTicket(Ticket ticket) {
         //communication with database is on
         em.getTransaction().begin();
@@ -31,15 +31,18 @@ public class TicketDao {
         LOGGER.info("Created Ticket:" + ticket);
     }
 
-    ////////////////////////////////////////
+    //functoin that communicates with database in order to reserve a ticket ( change t_booked flag from 0 to 1 ) - function called by Rest End point
+    ////////////////////////////////
     public int reserveTicket(int id) {
         Ticket ticket = search(id);
-        // if ticket id not found
+        // if ticket id not found entity manager will return null to the ticket object at line 37
         if ( ticket == null){
             LOGGER.info("Ticket with id:" + ticket.getUser_Id() + "doesn't exist.");
             return 0;
         }
+        //get ticket bookedFlag ( 0 or 1 ) into int variable
         int bookedFlag = ticket.getT_booked();
+        //return 0 if ticket already booked
         if (bookedFlag != 0) {
             LOGGER.info("Ticket:" + ticket + "is already reserved.");
             return 0;
@@ -54,7 +57,8 @@ public class TicketDao {
         }
     }
 
-    ////////////////////////////////////////    
+    //function that converts all database objects into a json formated String - function called by Rest End point
+    //////////////////////////////  
     public String getJsonsFromDB() {
         //necessary for appropriate json formating
         String returnString = "[";
@@ -72,7 +76,6 @@ public class TicketDao {
             } else {
                 returnString = returnString.concat(jsonInString);
             }
-            //            LOGGER.info("Printing jsonString:" + jsonInString);
         }
         //necessary for appropriate json formating
         returnString = returnString.concat("]");
@@ -80,19 +83,22 @@ public class TicketDao {
         return returnString;
     }
 
-    ////////////////////////////////////////            
+    //function that returns all tickets in DB in a List<Ticket>
+    ////////////////////////////////            
     public List<Ticket> getAllTicket() {
         //returns all tickets in a List<ticket>
         return em.createNamedQuery("Ticket.getAll").getResultList();
     }
 
-    ////////////////////////////////////////
+    //function that returns Ticket Object found in DB with id = this.id
+    /////////////////////////////
     public Ticket search(int id) {
         //returns ticket entity by id  = this.id
         return em.find(Ticket.class, id);
     }
     
-    ////////////////////////////////////////
+    //function that adds a Ticket to the DB which ticket is created by manipulating a json formated string - function called by Rest End point
+    /////////////////////////////////////////////////
     public void addTicketFromJson(String jsonStringData) {
         //Create Json Object from JsonStringData
         final JSONObject obj = new JSONObject(jsonStringData);
