@@ -1,0 +1,25 @@
+<h1 class="text-center">Tickets</h1>
+<div class="container">
+  <div class="row">
+      <table class="table">
+          <thead class="thead-inverse">
+          <tr>
+              <th class="text-center">Ticket ID</th>
+              <th class="text-center" >Title</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Is Booked?</th>
+              <th class="text-center"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let post of _postsArray">
+              <td class="text-center" style="width: 30px;">{{post.t_id}}</td>
+              <td class="text-center" style="width: 200px;">{{post.t_title}}</td>
+              <td class="text-center" style="width: 200px;">{{post.t_price}}</td>
+              <td class="text-center" style="width: 200px;">{{post.t_booked}}</td>
+              <td class="text-center" style="width: 200px;"><button (click)="doPOST(post)" >BOOK</button></td>
+          </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
