@@ -1,25 +1,45 @@
-<h1 class="text-center">Tickets</h1>
-<div class="container">
-  <div class="row">
-      <table class="table">
-          <thead class="thead-inverse">
-          <tr>
-              <th class="text-center">Ticket ID</th>
-              <th class="text-center" >Title</th>
-              <th class="text-center">Price</th>
-              <th class="text-center">Is Booked?</th>
-              <th class="text-center"></th>
-          </tr>
-          </thead>
-          <tbody>
+<body>
+<div class="container"class="center">
           <tr *ngFor="let post of _postsArray">
-              <td class="text-center" style="width: 30px;">{{post.t_id}}</td>
-              <td class="text-center" style="width: 200px;">{{post.t_title}}</td>
-              <td class="text-center" style="width: 200px;">{{post.t_price}}</td>
-              <td class="text-center" style="width: 200px;">{{post.t_booked}}</td>
+
+                <div class="cardWrap">
+                        <div class="card cardLeft">
+                          <h1>{{post.t_title}}</h1>
+                          <div class="title">
+                            <h2>{{post.t_title}}</h2>
+                            <span>movie</span>
+                          </div>
+                          <div class="name">
+                            <h2>UserName</h2>
+                            <span>name</span>
+                          </div>
+                          <div class="seat">
+                            <h2>{{post.t_id}}</h2>
+                            <span>ID</span>
+                          </div>
+                          <div class="time">
+                            <h2>12:00</h2>
+                            <span>time</span>
+                          </div>
+                          
+                        </div>
+                        <div class="card cardRight">
+                          <div class="eye"></div>
+                          <div class="number">
+                            <h3>{{post.t_id}}</h3>
+                            <span>ID</span>
+                          </div>
+                          <div class="barcode"></div>
+                        </div>
+                      
+                      </div>
               <td class="text-center" style="width: 200px;"><button (click)="doPOST(post)" >BOOK</button></td>
           </tr>
-          </tbody>
-      </table>
-  </div>
+         
+
 </div>
+
+</body>
+
+      
+      

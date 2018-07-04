@@ -1,8 +1,23 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <h1>{{title}}</h1>
-<nav>
-  <a routerLink="">Home</a> 
-  <a routerLink="/tickets">Tickets</a>
-</nav>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="" class="w3-bar-item w3-button"><b>C_</b> Force</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+        <a routerLink="" class="w3-bar-item w3-button">Home</a> 
+        <a routerLink="/tickets" class="w3-bar-item w3-button">Tickets</a>
+      
+    </div>
+  </div>
+</div>
 <router-outlet></router-outlet>
 

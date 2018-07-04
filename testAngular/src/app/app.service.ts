@@ -14,8 +14,8 @@ import { MessageService } from "./message.service";
  export class AppService {
      [x: string]: any;
  
-     private _getURL = "http://localhost:8080/home/ticket/allticket";
-     private _postUpdateURL = "http://localhost:8080/home/ticket/allticket/reserveTicket";
+     private _getURL = "http://localhost:8080/home/ticket/ticket/getAllTickets";
+     private _postUpdateURL = "http://localhost:8080/home/ticket/ticket/reserveTicket";
  
      constructor(    private http: HttpClient,
         private messageService: MessageService) {
