@@ -5,6 +5,7 @@ import {Tickets} from "./posts";
 import { map, tap, catchError } from 'rxjs/operators'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from "./message.service";
+import { Users } from "./components/models/users";
 
  const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,6 +17,7 @@ import { MessageService } from "./message.service";
  
      private _getURL = "http://localhost:8080/home/ticket/ticketRest/getAllTickets";
      private _postUpdateURL = "http://localhost:8080/home/ticket/ticketRest/reserveTicket";
+     private _loginURL = "http://localhost:8080/home/login";
      
  
      constructor(    private http: HttpClient,
@@ -43,6 +45,21 @@ import { MessageService } from "./message.service";
             catchError(this.handleError<Tickets>('doPOST'))
           );
 }
+
+//LOGIIIIIIN_______________________________________________________
+
+loginService(username: Users | string, password: Users | string): Observable<Users>{
+  const uname = username;
+  const pass=password;    
+  const url = `${this._loginURL}/?u_name=${uname}&u_pw=${pass}`; 
+  return this.http
+      .get<Users>(url, httpOptions)
+                 .pipe(
+          tap(_ => this.log(`updated ticket ticket_id=${uname}`)),
+          catchError(this.handleError<Users>('loginService'))
+        );
+}
+//___________________________________________________________________
        
   /** Log a HeroService message with the MessageService */
    /**

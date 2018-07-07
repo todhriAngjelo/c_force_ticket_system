@@ -28,7 +28,7 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*end reset*/
 body {
-    background: linear-gradient(to right bottom, #1cc7d0 ,#013ca6, #013ca6,#1cc7d0);
+    background: linear-gradient(to right bottom, #000 ,#ff6600, #000000,#ffffff);
     /* background: #cd1f46; */
     background-attachment: fixed;
     background-position: center;

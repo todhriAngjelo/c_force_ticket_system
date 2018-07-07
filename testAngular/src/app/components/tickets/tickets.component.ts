@@ -11,8 +11,7 @@ export class TicketsComponent implements OnInit {
 
   _postsArray: Tickets[];
  
-  constructor(private apiSerivce: AppService) {
-  }
+  constructor(private apiSerivce: AppService) {}
   
   
 
@@ -38,5 +37,7 @@ export class TicketsComponent implements OnInit {
     this.apiSerivce.doPOST(ticket)      
     .subscribe()
     };
+
+    
 
 }

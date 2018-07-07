@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../../app.service';
+import { Users } from '../models/users';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiService: AppService) {}
+  _usersArray: Users[];
 
   ngOnInit() {
+  }
+  
+  getLog(): void {
+    console.log("Hello");
+    this.apiService.getLogin()
+        .subscribe(
+            resultArray => this._usersArray = resultArray,
+            error => console.log("Error :: " + error)
+        )
   }
 
 }
