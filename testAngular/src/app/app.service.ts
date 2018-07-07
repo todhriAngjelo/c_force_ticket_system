@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
- import { Observable, of } from "rxjs"; 
- import "rxjs";
- import {Tickets} from "./posts";
- import { map, tap, catchError } from 'rxjs/operators'; 
- import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from "rxjs"; 
+import "rxjs";
+import {Tickets} from "./posts";
+import { map, tap, catchError } from 'rxjs/operators'; 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from "./message.service";
 
  const httpOptions = {
@@ -14,8 +14,9 @@ import { MessageService } from "./message.service";
  export class AppService {
      [x: string]: any;
  
-     private _getURL = "http://localhost:8080/home/ticket/ticket/getAllTickets";
-     private _postUpdateURL = "http://localhost:8080/home/ticket/ticket/reserveTicket";
+     private _getURL = "http://localhost:8080/home/ticket/ticketRest/getAllTickets";
+     private _postUpdateURL = "http://localhost:8080/home/ticket/ticketRest/reserveTicket";
+     
  
      constructor(    private http: HttpClient,
         private messageService: MessageService) {
@@ -41,12 +42,6 @@ import { MessageService } from "./message.service";
             tap(_ => this.log(`updated ticket ticket_id=${id}`)),
             catchError(this.handleError<Tickets>('doPOST'))
           );
-                 
-
-       // return this.http.put('http://localhost:8080/home/ticket/allticket',ticketId ); 
-             
-       
-
 }
        
   /** Log a HeroService message with the MessageService */
