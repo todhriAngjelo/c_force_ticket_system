@@ -9,14 +9,15 @@
 		<div class="content-wthree">
 		<div class="circle-w3layouts"></div>
 			<h2>Login</h2>
-			<form action="" method="GET" onsubmit="getLog();return false;">								
+			<form #f="ngForm" (ngSubmit)="getLog(f.value)" > 
+				<!-- onsubmit="getLog(uname,pass);return false;"								 -->
 				<div class="inputs-w3ls">
 									<i class="fa fa-user" aria-hidden="true"></i>
-									<input type="text" name="Username" placeholder="Username" required=""/>
+									<input type="text" name="u_Name" placeholder="Username" required="" id="uname" ngModel/>
 								</div>
 								<div class="inputs-w3ls">
 									<i class="fa fa-key" aria-hidden="true"></i>
-									<input type="password" name="Password" placeholder="Password" required=""/>
+									<input type="password" name="u_Pw" placeholder="Password" required="" id="pass" ngModel/>
 								</div>
 									<input type="submit" value="LOGIN"> 
 									<div class="wthree-text"> 
@@ -30,4 +31,8 @@
 	<div class="footer-w3l">
 		<p class="agileinfo"> &copy; 2017 All Rights Reserved </p>
 	</div>
+
+
+	<!-- _________________________________________________________________________ -->
+	
 </body>

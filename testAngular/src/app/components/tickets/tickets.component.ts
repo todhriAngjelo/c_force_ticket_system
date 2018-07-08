@@ -34,9 +34,7 @@ export class TicketsComponent implements OnInit {
   
   doPOST(ticket: Tickets): void {
      console.log("PUUUUUUT",ticket);
-    this.apiSerivce.doPOST(ticket)      
-    .subscribe()
-    };
+    this.apiSerivce.doPOST(ticket) ;     };
 
     
 

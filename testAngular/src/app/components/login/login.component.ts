@@ -15,13 +15,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   
-  getLog(): void {
-    console.log("Hello");
-    this.apiService.getLogin()
-        .subscribe(
-            resultArray => this._usersArray = resultArray,
-            error => console.log("Error :: " + error)
-        )
+  getLog(form: Users): void {
+    console.log('you submitted value:', form);  
+    console.log("GETLOG ON LOGIN.COMPONENT.TS");
+    this.apiService.loginService(form);
+    // console.log(uname);
+    // this.apiService.loginService(uname,pass);
+        
   }
 
 }

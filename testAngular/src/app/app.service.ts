@@ -6,23 +6,25 @@ import { map, tap, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from "./message.service";
 import { Users } from "./components/models/users";
-
+import { Router } from "@angular/router";
  const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    
   };
+  
 
  @Injectable()
  export class AppService {
      [x: string]: any;
  
-     private _getURL = "http://localhost:8080/home/ticket/ticketRest/getAllTickets";
-     private _postUpdateURL = "http://localhost:8080/home/ticket/ticketRest/reserveTicket";
-     private _loginURL = "http://localhost:8080/home/login";
+     private _getURL = "http://localhost:8080/home/ticket/ticket/getAllTickets";
+     private _postUpdateURL = "http://localhost:8080/home/ticket/ticket/reserveTicket";
+     private _loginURL = "http://localhost:8080/home/ticket/user/login";
      
  
-     constructor(    private http: HttpClient,
-        private messageService: MessageService) {
-     }
+     constructor( private http: HttpClient,
+                  private messageService: MessageService,
+                  private router:Router) {}
  
      getPosts(): Observable<Tickets[]> {
         return this.http.get<Tickets[]>(this._getURL)
@@ -35,6 +37,8 @@ import { Users } from "./components/models/users";
      load() {
       location.reload()
       }
+
+
   doPOST(ticket: Tickets | number): Observable<Tickets>{
     const id = typeof ticket === 'number' ? ticket : ticket.t_id;    
     const url = `${this._postUpdateURL}/${id}`; 
@@ -48,16 +52,34 @@ import { Users } from "./components/models/users";
 
 //LOGIIIIIIN_______________________________________________________
 
-loginService(username: Users | string, password: Users | string): Observable<Users>{
-  const uname = username;
-  const pass=password;    
-  const url = `${this._loginURL}/?u_name=${uname}&u_pw=${pass}`; 
-  return this.http
-      .get<Users>(url, httpOptions)
-                 .pipe(
-          tap(_ => this.log(`updated ticket ticket_id=${uname}`)),
-          catchError(this.handleError<Users>('loginService'))
-        );
+loginService(f: Users | string): Observable<Number>{
+  const uname = typeof f==='string' ? f : f.u_Name;
+  const pass = typeof f==='string' ? f : f.u_Pw;
+  console.log(uname);
+  console.log(pass);
+  const url = `${this._loginURL}?u_name=${uname}&u_pw=${pass}`; 
+  console.log("LOGINSERVICEEEEEEEEEEEEEEEEE")
+  console.log(url);
+
+  var m=this.http
+  .get<Number>(url, httpOptions)
+  .subscribe( value =>
+      {
+        if(value===1){
+          console.log("m einai 1");
+          
+          this.router.navigate(['tickets']);
+        }
+        else{
+          console.log("m einai 0");
+
+        }
+      
+      }  
+    );
+  
+
+  return;
 }
 //___________________________________________________________________
        

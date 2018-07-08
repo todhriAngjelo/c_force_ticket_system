@@ -6,9 +6,9 @@ import {AppComponent} from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { HomeComponent } from './components/home/home.component';
 import { TicketsComponent } from './components/tickets/tickets.component';
-import { AppRoutingModule } from './/app-routing.module';
 import { HomeTicketShowComponent } from './components/home-ticket-show/home-ticket-show.component';
 import { LoginComponent } from './components/login/login.component';
+import { AppRoutingModule } from "src/app/app-routing.module";
 
 @NgModule({
     declarations: [
