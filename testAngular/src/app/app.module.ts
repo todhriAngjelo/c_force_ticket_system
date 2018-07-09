@@ -9,6 +9,7 @@ import { TicketsComponent } from './components/tickets/tickets.component';
 import { HomeTicketShowComponent } from './components/home-ticket-show/home-ticket-show.component';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from "src/app/app-routing.module";
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { AppRoutingModule } from "src/app/app-routing.module";
         HomeComponent,
         TicketsComponent,
         HomeTicketShowComponent,
-        LoginComponent
+        LoginComponent,
+        RegisterComponent
     ],
     imports: [
         BrowserModule,
