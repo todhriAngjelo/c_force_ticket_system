@@ -19,11 +19,11 @@
   <div class="main-agileits">
     <h2 class="sub-head">Sign Up</h2>
       <div class="sub-main">	
-        <form action="#" method="post">
-          <input placeholder="User Name" name="Name" class="name" type="text" required="">
+        <form #f="ngForm" (ngSubmit)="register(f.value)">
+          <input placeholder="User Name" name="u_Name" class="name" type="text" required="" ngModel>
             <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br>
             
-          <input placeholder="Full Name" name="Name" class="name2" type="text" required="">
+          <input placeholder="Full Name" name="u_Fname" class="name2" type="text" required="" ngModel>
             <span class="icon2"><i class="fa fa-user" aria-hidden="true"></i></span><br>
 
           <!-- <input placeholder="Phone Number" name="Number" class="number" type="text" required="">
@@ -34,7 +34,7 @@
 
           <input  placeholder="Password" name="Password" class="pass" type="password" required="">
             <span class="icon3"><i class="fa fa-unlock" aria-hidden="true"></i></span><br>
-          <input  placeholder="Confirm Password" name="Password" class="pass" type="password" required="">
+          <input  placeholder="Confirm Password" name="u_Pw" class="pass" type="password" required="" ngModel>
             <span class="icon4"><i class="fa fa-unlock" aria-hidden="true"></i></span><br>
           
           <input type="submit" value="sign up">

@@ -20,6 +20,7 @@ import { Router } from "@angular/router";
      private _getURL = "http://localhost:8080/home/ticket/ticket/getAllTickets";
      private _postUpdateURL = "http://localhost:8080/home/ticket/ticket/reserveTicket";
      private _loginURL = "http://localhost:8080/home/ticket/user/login";
+     private _registerURL = "http://localhost:8080/home/ticket/user/register";
      
  
      constructor( private http: HttpClient,
@@ -82,6 +83,28 @@ loginService(f: Users | string): Observable<Number>{
   return;
 }
 //___________________________________________________________________
+
+
+//______________________________________REGISTEEEEEEEEEEEEEEEEEEEEEEEEEERRRRRRR___________________________________________________________________
+
+registerService(f: Users | string) {
+  const uname = typeof f==='string' ? f : f.u_Name;
+  const fname = typeof f==='string' ? f: f.u_Fname;
+  const pass = typeof f==='string' ? f : f.u_Pw;
+  console.log(uname);
+  console.log(fname);
+  console.log(pass);
+    const body = '{ "u_name": "' + uname + '", "u_fname": "' + fname + '", "u_pw": "' + pass + '" }';
+    const body2 = JSON.stringify({u_name: uname, u_fname: fname, u_pw: pass});
+        console.log(body2);
+ // var test =this.http.post(this._registerURL, body, httpOptions);
+ 
+    return this.http.post(this._registerURL, body, httpOptions);
+  }
+
+
+
+//______________________________________eeeeeeeeeeeND REGISTEEEEEEEEEEEEEEEEEEEEEEEEEERRRRRRR___________________________________________________________________
        
   /** Log a HeroService message with the MessageService */
    /**
