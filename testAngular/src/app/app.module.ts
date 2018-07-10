@@ -20,6 +20,7 @@ import { UpcomingComponent } from './components/upcoming/upcoming/upcoming.compo
 import { MoviesService } from "./services/movies.service";
 import { LoginNewComponent } from './components/login-new/login-new.component';
 import { TicketComponent } from './components/ticket/ticket.component';
+import { AppService } from "./services/app.service";
 
 @NgModule({
     declarations: [
@@ -47,7 +48,7 @@ import { TicketComponent } from './components/ticket/ticket.component';
         JsonpModule,
         AppRoutingModule
     ],
-    providers: [MoviesService],
+    providers: [MoviesService, AppService],
     bootstrap: [
         AppComponent
     ]

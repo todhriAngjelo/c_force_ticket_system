@@ -1,21 +1,21 @@
 import {Injectable} from "@angular/core";
 import { Observable, of } from "rxjs"; 
 import "rxjs";
-import {Tickets} from "./posts";
+import {Tickets} from "./../posts";
 import { tap, catchError } from 'rxjs/operators'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MessageService } from "./message.service";
-import { Users } from "./components/models/users";
+import { MessageService } from "./../message.service";
+import { Users } from "./../components/models/users";
 import { Router } from "@angular/router";
 
- const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    
-  };
   
-
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  
+};
  @Injectable()
  export class AppService {
+   
      [x: string]: any;
  
      private _getURL = "http://localhost:8080/home/ticket/ticket/getAllTickets";
@@ -40,6 +40,7 @@ import { Router } from "@angular/router";
       location.reload()
       }
 
+      
 
   doPOST(ticket: Tickets | number): Observable<Tickets>{
     const id = typeof ticket === 'number' ? ticket : ticket.t_id;    

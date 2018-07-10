@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tickets } from '../../posts';
-import { AppService } from '../../app.service';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-tickets',
@@ -11,7 +11,7 @@ export class TicketComponent {
 
   _postsArray: Tickets[];
  
-  //constructor(private apiSerivce: AppService) {}
+  constructor(private apiSerivce: AppService) {}
   
   
 
