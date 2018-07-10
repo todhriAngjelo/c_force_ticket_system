@@ -7,6 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from "./../message.service";
 import { Users } from "./../components/models/users";
 import { Router } from "@angular/router";
+import { AuthGuardService } from "./auth/auth-guard.service";
+import { AuthService } from "./auth/auth.service";
 
   
 const httpOptions = {
@@ -15,7 +17,6 @@ const httpOptions = {
 };
  @Injectable()
  export class AppService {
-   
      [x: string]: any;
  
      private _getURL = "http://localhost:8080/home/ticket/ticket/getAllTickets";
@@ -26,7 +27,8 @@ const httpOptions = {
  
      constructor( private http: HttpClient,
                   private messageService: MessageService,
-                  private router:Router) {}
+                  private router:Router,
+                  public auth1: AuthService) {}
  
      getPosts(): Observable<Tickets[]> {
         return this.http.get<Tickets[]>(this._getURL)
@@ -39,6 +41,7 @@ const httpOptions = {
      load() {
       location.reload()
       }
+      
 
       
 
@@ -63,13 +66,14 @@ loginService(f: Users | string): Observable<Number>{
   const url = `${this._loginURL}?u_name=${uname}&u_pw=${pass}`; 
   console.log("LOGINSERVICEEEEEEEEEEEEEEEEE")
   console.log(url);
-
+var m2;
   var m=this.http
   .get<Number>(url, httpOptions)
   .subscribe( value =>
       {
         if(value===1){
           console.log("m einai 1");
+          this.auth1.login();
           this.router.navigate(['tickets']);
         }
         else{
@@ -79,8 +83,7 @@ loginService(f: Users | string): Observable<Number>{
       
       }  
     );
-  
-
+m2=m;
   return;
 }
 //___________________________________________________________________

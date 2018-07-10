@@ -18,9 +18,10 @@ import { PopularSeriesComponent } from './components/popular-series/popular-seri
 import { SerieComponent } from './components/serie/serie/serie.component';
 import { UpcomingComponent } from './components/upcoming/upcoming/upcoming.component';
 import { MoviesService } from "./services/movies.service";
-import { LoginNewComponent } from './components/login-new/login-new.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { AppService } from "./services/app.service";
+import { AuthGuardService } from "./services/auth/auth-guard.service";
+import { AuthService } from "./services/auth/auth.service";
 
 @NgModule({
     declarations: [
@@ -37,7 +38,6 @@ import { AppService } from "./services/app.service";
         PopularSeriesComponent,
         SerieComponent,
         UpcomingComponent,
-        LoginNewComponent,
         TicketComponent
     ],
     imports: [
@@ -48,7 +48,7 @@ import { AppService } from "./services/app.service";
         JsonpModule,
         AppRoutingModule
     ],
-    providers: [MoviesService, AppService],
+    providers: [MoviesService, AppService, AuthService, AuthGuardService],
     bootstrap: [
         AppComponent
     ]

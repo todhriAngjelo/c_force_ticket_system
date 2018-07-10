@@ -1,6 +1,3 @@
-<p>
-  login works!
-</p>
 
 <body>
 	<h1>Login Form</h1>
@@ -19,12 +16,18 @@
 									<i class="fa fa-key" aria-hidden="true"></i>
 									<input type="password" name="u_Pw" placeholder="Password" required="" id="pass" ngModel/>
 								</div>
-									<input type="submit" value="LOGIN"> 
-									<div class="wthree-text"> 
+									<input type="submit" value="LOGIN" *ngIf="!authService.isLoggedIn">
+									<button type="" value="Logout" *ngIf="authService.isLoggedIn">Logout</button> 
+									<!-- <div class="wthree-text"> 
 										<ul> 
 											<li> <a href="#">Forgot password?</a> </li>
 										</ul>
-									</div>  
+									</div>   -->
+									<div class="wthree-text"> 
+											<ul> 
+												<li> <a routerLink="/register">Don't have an acount? Register.</a> </li>
+											</ul>
+										</div>  
 								</form>
 		</div>
 	</div>

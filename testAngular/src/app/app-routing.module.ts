@@ -8,15 +8,15 @@ import { ActorComponent } from './components/actor/actor/actor.component';
 import { UpcomingComponent } from './components/upcoming/upcoming/upcoming.component';
 import { PopularSeriesComponent } from './components/popular-series/popular-series/popular-series.component';
 import { MoviesComponent } from './components/movies/movies/movies.component';
-import { LoginNewComponent } from './components/login-new/login-new.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { AuthGuardService} from './services/auth/auth-guard.service';
+import { AuthService } from './services/auth/auth.service';
 
 
 const routes: Routes = [
   {path: '', component: MoviesComponent},
-  { path: 'tickets', component: TicketComponent },
+  { path: 'tickets', component: TicketComponent,    canActivate: [AuthGuardService]  },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
   {path: 'movie/:id', component: MovieComponent},
@@ -33,6 +33,10 @@ const routes: Routes = [
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ],
+  providers: [
+    AuthGuardService,
+    AuthService
+  ],
   declarations: []
 })
 
