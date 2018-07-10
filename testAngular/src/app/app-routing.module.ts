@@ -16,7 +16,6 @@ import { MoviesComponent } from './components/movies/movies/movies.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
   { path: 'tickets', component: TicketsComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
