@@ -1,7 +1,7 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
-import {HttpModule} from "@angular/http";
+import { HttpModule, JsonpModule } from '@angular/http';
 import {AppComponent} from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { HomeComponent } from './components/home/home.component';
@@ -18,6 +18,7 @@ import { MoviesComponent } from './components/movies/movies/movies.component';
 import { PopularSeriesComponent } from './components/popular-series/popular-series/popular-series.component';
 import { SerieComponent } from './components/serie/serie/serie.component';
 import { UpcomingComponent } from './components/upcoming/upcoming/upcoming.component';
+import { MoviesService } from "./services/movies.service";
 
 @NgModule({
     declarations: [
@@ -41,9 +42,10 @@ import { UpcomingComponent } from './components/upcoming/upcoming/upcoming.compo
         FormsModule,
         HttpModule,
         HttpClientModule,
+        JsonpModule,
         AppRoutingModule
     ],
-    providers: [],
+    providers: [MoviesService],
     bootstrap: [
         AppComponent
     ]
