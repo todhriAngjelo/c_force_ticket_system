@@ -10,6 +10,14 @@ import { HomeTicketShowComponent } from './components/home-ticket-show/home-tick
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from "src/app/app-routing.module";
 import { RegisterComponent } from './components/register/register.component';
+import { ActorComponent } from './components/actor/actor/actor.component';
+import { GenresComponent } from './components/genres/genres/genres.component';
+import { MovieComponent } from './components/movie/movie/movie.component';
+import { MovieCardComponent } from './components/movie-card/movie-card/movie-card.component';
+import { MoviesComponent } from './components/movies/movies/movies.component';
+import { PopularSeriesComponent } from './components/popular-series/popular-series/popular-series.component';
+import { SerieComponent } from './components/serie/serie/serie.component';
+import { UpcomingComponent } from './components/upcoming/upcoming/upcoming.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +26,15 @@ import { RegisterComponent } from './components/register/register.component';
         TicketsComponent,
         HomeTicketShowComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        ActorComponent,
+        GenresComponent,
+        MovieComponent,
+        MovieCardComponent,
+        MoviesComponent,
+        PopularSeriesComponent,
+        SerieComponent,
+        UpcomingComponent
     ],
     imports: [
         BrowserModule,

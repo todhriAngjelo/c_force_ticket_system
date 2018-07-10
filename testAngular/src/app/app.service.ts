@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from "./message.service";
 import { Users } from "./components/models/users";
 import { Router } from "@angular/router";
+
  const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     
@@ -68,7 +69,6 @@ loginService(f: Users | string): Observable<Number>{
       {
         if(value===1){
           console.log("m einai 1");
-          
           this.router.navigate(['tickets']);
         }
         else{

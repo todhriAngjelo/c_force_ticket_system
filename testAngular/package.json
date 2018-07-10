@@ -20,9 +20,11 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@auth0/angular-jwt": "^2.0.0",
     "circular-json": "^0.5.5",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
+    "rxjs-compat": "^6.2.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
