@@ -1,5 +1,5 @@
 <body>
-  <div class="container"class="center">
+  <!-- <div class="container"class="center">
     
             <tr *ngFor="let post of _postsArray">
   
@@ -38,8 +38,35 @@
             </tr>
            
   
-  </div>
-  
+  </div> -->
+
+
+
+
+  <div class="row" *ngFor="let post of _postsArray">
+      <div class="col-md-4">
+        <img src="https://upload.wikimedia.org/wikipedia/el/thumb/1/18/Rocky_poster.jpg/200px-Rocky_poster.jpg" alt="" class="thumbnail">
+        <p>
+          <a class="btn btn-info btn-block" (click)="doPOST(post)" target="_blank">Book Now</a>
+        </p>
+      </div>
+      <div class="col-md-8">
+        <h2>{{post.t_title}}
+          <small class="label label-warning">
+            7.2
+            <i class="glyphicon glyphicon-star"></i>
+          </small>
+        </h2>
+        <p>eee</p>
+        <h3>Overview</h3>
+        <p>
+          kati kati
+        </p>
+        
+      </div>
+    </div>
+    _________________________________________________________________________________________________
+
   </body>
   
         
