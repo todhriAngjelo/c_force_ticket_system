@@ -10,13 +10,13 @@ export class MoviesService {
     this.apikey = 'fed69657ba4cc6e1078d2a6a95f51c8c';
     console.log('Movies service is ready');
   }
-
+//install --------------- npm install rxjs@6 rxjs-compat@6 --save 
   getPopular() {
     var search = new URLSearchParams();
     search.set('sort_by','popularity.desc');
     search.set('api_key', this.apikey);
     return this._jsonp.get('https://api.themoviedb.org/3/discover/movie?callback=JSONP_CALLBACK', {search})
-      .map(res => {
+      .map(res => { 
         return res.json();
       })
   }

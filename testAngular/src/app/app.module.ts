@@ -5,7 +5,6 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import {AppComponent} from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { HomeComponent } from './components/home/home.component';
-import { TicketsComponent } from './components/tickets/tickets.component';
 import { HomeTicketShowComponent } from './components/home-ticket-show/home-ticket-show.component';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from "src/app/app-routing.module";
@@ -19,12 +18,13 @@ import { PopularSeriesComponent } from './components/popular-series/popular-seri
 import { SerieComponent } from './components/serie/serie/serie.component';
 import { UpcomingComponent } from './components/upcoming/upcoming/upcoming.component';
 import { MoviesService } from "./services/movies.service";
+import { LoginNewComponent } from './components/login-new/login-new.component';
+import { TicketComponent } from './components/ticket/ticket.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
-        TicketsComponent,
         HomeTicketShowComponent,
         LoginComponent,
         RegisterComponent,
@@ -35,7 +35,9 @@ import { MoviesService } from "./services/movies.service";
         MoviesComponent,
         PopularSeriesComponent,
         SerieComponent,
-        UpcomingComponent
+        UpcomingComponent,
+        LoginNewComponent,
+        TicketComponent
     ],
     imports: [
         BrowserModule,

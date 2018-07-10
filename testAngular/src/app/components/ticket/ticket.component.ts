@@ -4,14 +4,14 @@ import { AppService } from '../../app.service';
 
 @Component({
   selector: 'app-tickets',
-  templateUrl: './tickets.component.html',
-  styleUrls: ['./tickets.component.scss']
+  templateUrl: './ticket.component.html',
+  styleUrls: ['./ticket.component.scss']
 })
-export class TicketsComponent implements OnInit {
+export class TicketComponent {
 
   _postsArray: Tickets[];
  
-  constructor(private apiSerivce: AppService) {}
+  //constructor(private apiSerivce: AppService) {}
   
   
 
@@ -23,9 +23,6 @@ export class TicketsComponent implements OnInit {
           )
   }
  
- hello(){
-     console.log("Helloooooo");
- }
 
   ngOnInit(): void {
       this.getPosts();

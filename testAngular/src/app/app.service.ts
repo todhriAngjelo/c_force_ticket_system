@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import { Observable, of } from "rxjs"; 
 import "rxjs";
 import {Tickets} from "./posts";
-import { map, tap, catchError } from 'rxjs/operators'; 
+import { tap, catchError } from 'rxjs/operators'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from "./message.service";
 import { Users } from "./components/models/users";
