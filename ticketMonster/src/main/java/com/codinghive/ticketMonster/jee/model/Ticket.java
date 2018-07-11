@@ -1,6 +1,4 @@
-
 package com.codinghive.ticketMonster.jee.model;
-
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table
 @NamedQueries({
-    @NamedQuery(name = "Ticket.getAll", query = "SELECT e FROM Ticket e")})
+@NamedQuery(name = "Ticket.getAll", query = "SELECT e FROM Ticket e")})
 public class Ticket implements Serializable {
 
     // Create Columns

@@ -1,5 +1,4 @@
 package com.codinghive.ticketMonster.jee.dao;
-
 import com.codinghive.ticketMonster.jee.model.Ticket;
 import org.slf4j.Logger;
 import java.util.List;

@@ -1,6 +1,4 @@
-
 package com.codinghive.ticketMonster.jee.rest;
-
 import com.codinghive.ticketMonster.jee.model.Ticket;
 import com.codinghive.ticketMonster.jee.rest.ejb.TicketBL;
 import com.google.gson.Gson;

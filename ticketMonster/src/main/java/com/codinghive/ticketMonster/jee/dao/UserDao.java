@@ -1,5 +1,4 @@
 package com.codinghive.ticketMonster.jee.dao;
-
 import com.codinghive.ticketMonster.jee.model.User;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -7,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 
 @Stateless(name = "UseDao")
 public class UserDao {
@@ -38,7 +36,7 @@ public class UserDao {
     }
        
     //return user object by Id = this.id
-    //returns nulll if object by Id = this.id not found
+    //returns null if object by Id = this.id not found
     ///////////////////////////////
     public User getUserFromId(int U_ID) {
         //returns ticket entity by id  = this.id

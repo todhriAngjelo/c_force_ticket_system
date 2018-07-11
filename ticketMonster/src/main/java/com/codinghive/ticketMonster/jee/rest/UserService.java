@@ -1,5 +1,4 @@
 package com.codinghive.ticketMonster.jee.rest;
-
 import com.codinghive.ticketMonster.jee.rest.ejb.UserBL;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
@@ -18,7 +17,6 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 @Path("/userRest")
 public class UserService {
     
@@ -29,6 +27,7 @@ public class UserService {
     @POST
     @Consumes("application/json")
     @Path("/register")
+    //register rest resvice which registers user if he doesnt exist already
     ///////////////////////////////////////////////
     public Response regsiter(InputStream incomingData) {
         StringBuilder crunchifyBuilder = new StringBuilder();
@@ -55,33 +54,32 @@ public class UserService {
         }  
     }   
     
-    ////////////////////////
+    
     @GET
     @Produces("text/plain")
+    //login rest service which logins user ( returns true or false to the client ) if user with username u_name is found and his pw matches u_pw
     //https://vrsbrazil.wordpress.com/2013/08/07/passing-parameters-to-a-restful-web-service/
+    ////////////////
     @Path("/login/")
     public String logIn(@QueryParam("u_name") String u_name, @QueryParam("u_pw") String u_pw) {
         Boolean bool= userBL.logIn(u_name,u_pw);
         return  bool.toString();
     }
     
+    @GET
+    @Produces("application/json")
+    @Path("/getUserName/{id:[0-9][0-9]*}")
+    public String getUserName(@PathParam("id") int id){
+        if ( userBL.getUserFromId(id) == null ) {
+            LOGGER.info("User by id: " + id + " not found.");
+            return null;
+        }else{
+            Gson gson = new Gson();
+            String gsonString = gson.toJson(userBL.getUserFromId(id));
+            return gsonString;
+        }   
+    }
     
-    
-//    
-//    @GET
-//    @Produces("application/json")
-//    @Path("/getUserName/{id:[0-9][0-9]*}")
-//    public String getUserName(@PathParam("id") int id){
-//        if ( userDao.getUserById(id) == null ) {
-//            LOGGER.info("User by id: " + id + " not found.");
-//            return null;
-//        }else{
-//            Gson gson = new Gson();
-//            String gsonString = gson.toJson(userDao.getUserById(id));
-//            return gsonString;
-//        }   
-//    }
-//    
     
     
     
