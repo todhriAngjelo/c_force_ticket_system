@@ -1,7 +1,7 @@
 package com.codinghive.ticketMonster.jee.rest;
 
 import com.codinghive.ticketMonster.jee.dao.UserDao;
-import com.codinghive.ticketMonster.jee.model.Ticket;
+import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,6 +10,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
@@ -18,13 +19,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-@Path("/user")
+@Path("/userRest")
 public class UserService {
     
     @Inject
     private UserDao userDao;
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDao.class);
 
+    
+    
+    
+    //
+    @GET
+    @Produces("application/json")
+    @Path("/getUserName/{id:[0-9][0-9]*}")
+    public String getUserName(@PathParam("id") int id){
+        if ( userDao.getUserById(id) == null ) {
+            LOGGER.info("User by id: " + id + " not found.");
+            return null;
+        }else{
+            Gson gson = new Gson();
+            String gsonString = gson.toJson(userDao.getUserById(id));
+            return gsonString;
+        }
+        
+    }
     
     ////////////////////////
     @GET
@@ -51,12 +70,12 @@ public class UserService {
             LOGGER.info("Error Parsing: - ");
         }
         LOGGER.info("Data Received: " + crunchifyBuilder.toString());
-        // template code above ↑↑↑ (ALT + 24 / 26 )
+        // template code above ↑↑↑ (ALT + 24 / 26)
         // business logic
         String jsonString = crunchifyBuilder.toString();
         final JSONObject obj = new JSONObject(jsonString);
         
-        if (userDao.register(obj.getString("u_name"), obj.getString("u_fname"), obj.getString("u_pw"))==1){
+        if (userDao.register(obj.getString("u_name"), obj.getString("u_pw"), obj.getString("u_fname"))==true){
             // return HTTP response 200 in case of success
             return Response.status(200).entity(crunchifyBuilder.toString()).build();
         }else{

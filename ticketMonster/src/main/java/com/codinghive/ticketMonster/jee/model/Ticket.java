@@ -3,6 +3,8 @@ package com.codinghive.ticketMonster.jee.model;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -17,6 +19,7 @@ public class Ticket implements Serializable {
     // Create Columns
     @Id
     @Column
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private int t_id;
 
     @Column
@@ -54,10 +57,6 @@ public class Ticket implements Serializable {
     //    END Getters ------------------------
 
     //    Setters ------------------------  
-    public void setT_id(int t_id) {
-        this.t_id = t_id;
-    }
-
     public void setT_title(String t_title) {
         this.t_title = t_title;
     }
@@ -76,13 +75,11 @@ public class Ticket implements Serializable {
 //   END  Setters ------------------------
 
 //   Constructors ------------------------
-    public Ticket(int t_id, int t_booked) {
-        this.t_id = t_id;
+    public Ticket(int t_booked) {
         this.t_booked = t_booked;
     }
 
-    public Ticket(int t_id, String t_title, double t_price, int user_Id, int t_booked) {
-        this.t_id = t_id;
+    public Ticket(String t_title, double t_price, int user_Id, int t_booked) {
         this.t_title = t_title;
         this.t_price = t_price;
         this.user_Id = user_Id;

@@ -75,23 +75,23 @@ public class TicketServlet extends HttpServlet {
             t_booked = Integer.parseInt(t_bookedStr);
         }
 
-        Ticket ticket = new Ticket(t_id, t_title, t_price, user_Id, t_booked); //pernaei stoixeia se ena Ticket object
+        Ticket ticket = new Ticket(t_title, t_price, user_Id, t_booked); //pernaei stoixeia se ena Ticket object
 
         if ("Add".equalsIgnoreCase(action)) { // an epilexthei ADD sti forma
             ticketDao.addTicket(ticket);         // kalei tin addTicket sto TicketDao.java
             request.setAttribute("ticket", ticket);
-            request.setAttribute("allTicket", ticketDao.getAllTicket());
+            request.setAttribute("allTicket", ticketDao.getAllTicketList());
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
         } else if ("Show".equalsIgnoreCase(action)) {// an epilexthei Show sti forma
             request.setAttribute("ticket", ticket);
-            request.setAttribute("allTicket", ticketDao.getAllTicket());
+            request.setAttribute("allTicket", ticketDao.getAllTicketList());
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
         } else if ("Search".equalsIgnoreCase(action)) {// an epilexthei Search sti forma
 
             // auto fill ticket form with the searchedId ticket info
-            request.setAttribute("ticket", ticketDao.search(t_id));
+            request.setAttribute("ticket", ticketDao.getTicketById(t_id));
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
         }

@@ -4,6 +4,8 @@ import java.io.Serializable;
 //import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -16,11 +18,15 @@ import javax.persistence.Table;
 @NamedQuery(name = "User.getAll", query = "SELECT e FROM User e")})
 public class User implements Serializable {
 
+    
     @Id
+    @Column(unique = true)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    private int u_Id;
+    
     @Column
     private String u_Name;
-    @Column
-    private int u_Id;
+
     @Column
     private String u_Pw;
     @Column
@@ -53,10 +59,6 @@ public class User implements Serializable {
     public void setU_Name(String u_Name) {
         this.u_Name = u_Name;
     }
-    
-    public void setU_id(int u_id) {
-        this.u_Id = u_id;
-    }
 
     public void setU_Pw(String u_Pw) {
         this.u_Pw = u_Pw;
@@ -83,9 +85,8 @@ public class User implements Serializable {
     }
     
     
-    public User(String u_Name, int u_Id, String u_Pw, String u_Fname) {
+    public User(String u_Name, String u_Pw, String u_Fname) {
         this.u_Name = u_Name;
-        this.u_Id = u_Id;
         this.u_Pw = u_Pw;
         this.u_Fname = u_Fname;
     }
