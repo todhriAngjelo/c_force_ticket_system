@@ -31,7 +31,7 @@ public class TicketBL {
         //Create Json Object from JsonStringData
         final JSONObject obj = new JSONObject(jsonStringData);
         //Create ticket object from JsonObject
-        Ticket ticket = new Ticket(obj.getString("t_title"), obj.getInt("t_price"), obj.getInt("user_id"), obj.getInt("t_booked"));
+        Ticket ticket = new Ticket(obj.getString("t_title"), obj.getInt("t_price"), obj.getInt("user_id"), obj.getInt("t_booked"), obj.getString("t_overview"), obj.getString("t_rating"), obj.getString("t_urlImage"));
         //Add Ticket Object to DB
         ticketDao.addTicket(ticket);
         LOGGER.info("Created and added ticket to database from REST endpoint");

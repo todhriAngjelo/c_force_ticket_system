@@ -32,7 +32,6 @@ public class TicketDao {
     /////////////////////////////////
     public void dbUpdate(Ticket ticket){
         em.getTransaction().begin();
-        LOGGER.info("ID:" + ticket.getT_booked());
         em.merge(ticket);
         em.getTransaction().commit();
         LOGGER.info("merge Ticket into db");       

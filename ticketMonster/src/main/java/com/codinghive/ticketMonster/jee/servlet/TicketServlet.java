@@ -74,8 +74,8 @@ public class TicketServlet extends HttpServlet {
         if (t_bookedStr != null && !t_bookedStr.equals("")) {     //dexete dedomena  
             t_booked = Integer.parseInt(t_bookedStr);
         }
-
-        Ticket ticket = new Ticket(t_title, t_price, user_Id, t_booked); //pernaei stoixeia se ena Ticket object
+        String t_overview=null, t_rating=null, t_urlString =null;
+        Ticket ticket = new Ticket(t_title, t_price, user_Id, t_booked, t_overview, t_rating, t_urlString); //pernaei stoixeia se ena Ticket object
 
         if ("Add".equalsIgnoreCase(action)) { // an epilexthei ADD sti forma
             ticketDao.addTicket(ticket);         // kalei tin addTicket sto TicketDao.java

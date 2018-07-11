@@ -1,3 +1,4 @@
+
 package com.codinghive.ticketMonster.jee.model;
 
 import java.io.Serializable;
@@ -24,6 +25,15 @@ public class Ticket implements Serializable {
 
     @Column
     private String t_title;
+    
+    @Column
+    private String t_rating;
+    
+    @Column
+    private String t_overview;
+    
+    @Column
+    private String t_urlImage;
 
     @Column
     private double t_price;
@@ -37,6 +47,18 @@ public class Ticket implements Serializable {
     //    Getters ------------------------
     public int getT_id() {
         return t_id;
+    }
+    
+    public String getT_overview() {
+        return t_overview;
+    }
+     
+    public String getT_rating() {
+        return t_rating;
+    }
+      
+    public String getT_urlImage() {
+        return t_urlImage;
     }
 
     public String getT_title() {
@@ -56,7 +78,19 @@ public class Ticket implements Serializable {
     }
     //    END Getters ------------------------
 
-    //    Setters ------------------------  
+    //    Setters ------------------------ 
+    public void getT_overview(String t_overview) {
+        this.t_overview = t_overview;
+    }
+     
+    public void getT_rating(String t_rating) {
+        this.t_rating = t_rating;
+    }
+      
+    public void getT_urlImage(String t_urlImage) {
+        this.t_urlImage = t_urlImage;
+    }
+    
     public void setT_title(String t_title) {
         this.t_title = t_title;
     }
@@ -75,12 +109,12 @@ public class Ticket implements Serializable {
 //   END  Setters ------------------------
 
 //   Constructors ------------------------
-    public Ticket(int t_booked) {
-        this.t_booked = t_booked;
-    }
 
-    public Ticket(String t_title, double t_price, int user_Id, int t_booked) {
+    public Ticket(String t_title, double t_price, int user_Id, int t_booked, String t_overview, String t_rating , String t_urlImage) {
         this.t_title = t_title;
+        this.t_rating = t_rating;
+        this.t_overview = t_overview;
+        this.t_urlImage = t_urlImage;
         this.t_price = t_price;
         this.user_Id = user_Id;
         this.t_booked = t_booked;
@@ -92,8 +126,8 @@ public class Ticket implements Serializable {
 //   END  Constructor ------------------------
     @Override
     public String toString() {
-        return "Users{" + "t_id=" + t_id + ", t_title='" + t_title + '\'' + ", t_price='" + t_price + '\''
-                + ", user_Id=" + user_Id + ", t_booked=" + t_booked + '}';
+        return "Ticket {" + "t_id=" + t_id + ", t_title='" + t_title + '\'' + ", t_price='" + t_price + '\''
+                + ", user_Id=" + user_Id + ", t_booked=" + t_booked + ", t_rating=" + t_rating + ", t_overview=" + t_overview + ", t_urlImage=" + t_urlImage +'}';
     }
 
 }
