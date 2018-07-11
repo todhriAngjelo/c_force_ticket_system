@@ -16,13 +16,14 @@
     </div>
   <!--//header-->
 <!--main-->
-  <div class="main-agileits">
+  <div class="main-agileits" align="center">
     <h2 class="sub-head">Sign Up</h2>
       <div class="sub-main">	
         <form #f="ngForm" (ngSubmit)="register(f.value)">
+          <div>
           <input placeholder="User Name" name="u_Name" class="name" type="text" required="" ngModel>
             <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br>
-            
+          </div>
           <input placeholder="Full Name" name="u_Fname" class="name2" type="text" required="" ngModel>
             <span class="icon2"><i class="fa fa-user" aria-hidden="true"></i></span><br>
 

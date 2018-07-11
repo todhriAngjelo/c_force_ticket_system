@@ -30,7 +30,7 @@ export class TicketComponent {
   
   
   doPOST(ticket: Tickets): void {
-     console.log("PUUUUUUT",ticket);
+     console.log("doPost on ticket.component.ts", ticket);
     this.apiSerivce.doPOST(ticket) ;     };
 
     

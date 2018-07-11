@@ -28,7 +28,7 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*end reset*/
 body {
-    background: linear-gradient(to right bottom, #000 ,#ff6600, #000000,#ffffff);
+    /* background: linear-gradient(to right bottom, #000 ,#ff6600, #000000,#ffffff); */
     /* background: #cd1f46; */
     background-attachment: fixed;
     background-position: center;
@@ -44,7 +44,7 @@ h1 {
     color: #fff;
 }
 .main-agile {
-    width: 28%;
+    width: 70%;
     margin: 0px auto 0px auto;
     background: rgba(0, 0, 0, 0.22);
     padding: 12px;
@@ -54,7 +54,7 @@ h1 {
     box-shadow: 5px 5px 7px 0px rgba(0, 0, 0, 0.12);
 }
 .alert-close {
-    background: url('../../../assets/images/into.png') no-repeat 0px 0px;
+    /* background: url('../../../assets/images/into.png') no-repeat 0px 0px; */
     background-size: 16px;
     cursor: pointer;
     height: 24px;
@@ -69,7 +69,7 @@ h1 {
     z-index: 999;
 }
 .content-wthree {
-    padding: 50px 50px;
+    padding: 20px 20px;
     text-align: center;
 	position: relative;
 }

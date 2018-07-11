@@ -45,7 +45,7 @@
 
   <div class="row" *ngFor="let post of _postsArray">
       <div class="col-md-4">
-        <img src="https://upload.wikimedia.org/wikipedia/el/thumb/1/18/Rocky_poster.jpg/200px-Rocky_poster.jpg" alt="" class="thumbnail">
+        <img [src]="post.t_urlImage" alt="" class="thumbnail"/>
         <p>
           <a class="btn btn-info btn-block" (click)="doPOST(post)" target="_blank">Book Now</a>
         </p>
@@ -53,14 +53,14 @@
       <div class="col-md-8">
         <h2>{{post.t_title}}
           <small class="label label-warning">
-            7.2
+            {{post.t_rating}}
             <i class="glyphicon glyphicon-star"></i>
           </small>
         </h2>
-        <p>eee</p>
+        <p></p>
         <h3>Overview</h3>
         <p>
-          kati kati
+          {{post.t_overview}}
         </p>
         
       </div>
