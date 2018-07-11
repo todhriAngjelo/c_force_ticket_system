@@ -9,9 +9,22 @@ export class AuthGuardService implements CanActivate {
     canActivate() {
       console.log('AuthGuard#canActivate called');
       console.log(this.auth.isLoggedIn);
+
+
+
       if(!this.auth.isLoggedIn){
+      
+
         return false;
+        
       }
+      console.log("eddddddddddddddddwwwwwwwwwww",JSON.stringify(this.auth.isLoggedIn));
+      localStorage.removeItem('key');
+      localStorage.setItem('key', JSON.stringify(this.auth.isLoggedIn));
+      console.log("APOTHIKEVW OTI EISAI LOGGED IN");
       return true;
+    }
+    ngOnInit() { // your code here
+     
     }
   }

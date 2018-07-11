@@ -23,6 +23,7 @@
     "@auth0/angular-jwt": "^2.0.0",
     "circular-json": "^0.5.5",
     "core-js": "^2.5.4",
+    "jwt-decode": "^2.2.0",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
     "zone.js": "^0.8.26"

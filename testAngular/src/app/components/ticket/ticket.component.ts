@@ -8,6 +8,7 @@ import { AppService } from '../../services/app.service';
   styleUrls: ['./ticket.component.css']
 })
 export class TicketComponent {
+    array: Array<any>;
 
   _postsArray: Tickets[];
  
@@ -25,12 +26,15 @@ export class TicketComponent {
  
 
   ngOnInit(): void {
+      
       this.getPosts();
   }
   
   
   doPOST(ticket: Tickets): void {
      console.log("doPost on ticket.component.ts", ticket);
+     localStorage.removeItem('Array');
+    localStorage.setItem('Array', JSON.stringify(this.array));
     this.apiSerivce.doPOST(ticket) ;     };
 
     

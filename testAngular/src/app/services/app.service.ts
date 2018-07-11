@@ -55,7 +55,7 @@ const httpOptions = {
    
     var m= this.http
         .post<Tickets>(url, httpOptions)
-        .subscribe();
+        .subscribe(_=> this.load());
     console.log(m);
 }
 
