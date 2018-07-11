@@ -17,9 +17,9 @@ export class AuthService {
   
   logout(): void {
     console.log("logout in auth.service.ts");
+    this.isLoggedIn = false;
     localStorage.removeItem('key');
     localStorage.setItem('key', JSON.stringify(this.isLoggedIn));
     console.log("APOTHIKEVW OTI DEN EISAI LOGGED IN");
-    this.isLoggedIn = false;
   }
 }
