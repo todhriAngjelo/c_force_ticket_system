@@ -1,7 +1,6 @@
 
 package com.codinghive.ticketMonster.jee.rest;
 
-import com.codinghive.ticketMonster.jee.dao.TicketDao;
 import com.codinghive.ticketMonster.jee.model.Ticket;
 import com.codinghive.ticketMonster.jee.rest.ejb.TicketBL;
 import com.google.gson.Gson;
@@ -23,11 +22,11 @@ import org.slf4j.LoggerFactory;
 @Path("/ticketRest")
 public class TicketService {
 
-    //LOGGER object for console info logging
-    private static final Logger LOGGER = LoggerFactory.getLogger(TicketDao.class);
-    
     @Inject
     private TicketBL ticketBL;  
+    //LOGGER object for console info logging
+    private static final Logger LOGGER = LoggerFactory.getLogger(TicketService.class);
+   
     
     @GET
     @Produces("application/json")

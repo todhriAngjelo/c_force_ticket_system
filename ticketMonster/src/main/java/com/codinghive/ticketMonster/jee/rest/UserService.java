@@ -1,6 +1,6 @@
 package com.codinghive.ticketMonster.jee.rest;
 
-import com.codinghive.ticketMonster.jee.dao.UserDao;
+import com.codinghive.ticketMonster.jee.rest.ejb.UserBL;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -23,43 +23,15 @@ import org.slf4j.LoggerFactory;
 public class UserService {
     
     @Inject
-    private UserDao userDao;
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserDao.class);
-
+    private UserBL userBL;
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
     
-    
-    
-    //
-    @GET
-    @Produces("application/json")
-    @Path("/getUserName/{id:[0-9][0-9]*}")
-    public String getUserName(@PathParam("id") int id){
-        if ( userDao.getUserById(id) == null ) {
-            LOGGER.info("User by id: " + id + " not found.");
-            return null;
-        }else{
-            Gson gson = new Gson();
-            String gsonString = gson.toJson(userDao.getUserById(id));
-            return gsonString;
-        }
-        
-    }
-    
-    ////////////////////////
-    @GET
-    @Produces("application/json")
-    //https://vrsbrazil.wordpress.com/2013/08/07/passing-parameters-to-a-restful-web-service/
-    @Path("/login/")
-    public String logIn(@QueryParam("u_name") String u_name, @QueryParam("u_pw") String u_pw) {
-        return userDao.logIn(u_name,u_pw);
-    }
-    
-    ////////////////////////
     @POST
     @Consumes("application/json")
     @Path("/register")
+    ///////////////////////////////////////////////
     public Response regsiter(InputStream incomingData) {
-       StringBuilder crunchifyBuilder = new StringBuilder();
+        StringBuilder crunchifyBuilder = new StringBuilder();
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(incomingData));
             String line = null;
@@ -74,12 +46,44 @@ public class UserService {
         // business logic
         String jsonString = crunchifyBuilder.toString();
         final JSONObject obj = new JSONObject(jsonString);
-        
-        if (userDao.register(obj.getString("u_name"), obj.getString("u_pw"), obj.getString("u_fname"))==true){
+
+        if (userBL.register(obj.getString("u_name"), obj.getString("u_pw"), obj.getString("u_fname"))==true){
             // return HTTP response 200 in case of success
             return Response.status(200).entity(crunchifyBuilder.toString()).build();
         }else{
             return Response.status(500).entity(crunchifyBuilder.toString()).build();
         }  
-    }      
+    }   
+    
+    ////////////////////////
+    @GET
+    @Produces("text/plain")
+    //https://vrsbrazil.wordpress.com/2013/08/07/passing-parameters-to-a-restful-web-service/
+    @Path("/login/")
+    public String logIn(@QueryParam("u_name") String u_name, @QueryParam("u_pw") String u_pw) {
+        Boolean bool= userBL.logIn(u_name,u_pw);
+        return  bool.toString();
+    }
+    
+    
+    
+//    
+//    @GET
+//    @Produces("application/json")
+//    @Path("/getUserName/{id:[0-9][0-9]*}")
+//    public String getUserName(@PathParam("id") int id){
+//        if ( userDao.getUserById(id) == null ) {
+//            LOGGER.info("User by id: " + id + " not found.");
+//            return null;
+//        }else{
+//            Gson gson = new Gson();
+//            String gsonString = gson.toJson(userDao.getUserById(id));
+//            return gsonString;
+//        }   
+//    }
+//    
+    
+    
+    
+       
 }

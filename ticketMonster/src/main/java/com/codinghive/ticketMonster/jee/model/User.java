@@ -1,6 +1,7 @@
 package com.codinghive.ticketMonster.jee.model;
 
 import java.io.Serializable;
+import java.util.List;
 //import java.util.ArrayList;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,18 +23,18 @@ public class User implements Serializable {
     @Id
     @Column(unique = true)
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-    private int u_Id;
-    
+    private int u_Id;  
     @Column
     private String u_Name;
-
     @Column
     private String u_Pw;
     @Column
     private String u_Fname;
     
+//    @Column
+//    private List<Ticket> listOfTickets;
+//    
 //    private boolean u_Admin;
-//    private ArrayList<Ticket> u_Tickets;
 
 
     //GETTERS START HERE

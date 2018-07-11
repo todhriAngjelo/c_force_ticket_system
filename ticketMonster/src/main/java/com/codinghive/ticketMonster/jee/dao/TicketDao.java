@@ -48,7 +48,6 @@ public class TicketDao {
     //function that returns all tickets in DB in a List<Ticket>
     ////////////////////////////////            
     public List<Ticket> getAllTicketList() {
-        //returns all tickets in a List<ticket>
         return em.createNamedQuery("Ticket.getAll").getResultList();
     }
     
