@@ -30,6 +30,12 @@ export class AppComponent {
     localStorage.removeItem('key'); // to clear it again.
     console.log("FERNW PISW TO ISLOGGED IN2222222222");
 
+    // console.log("FERNW PISW TO admin");
+
+    // this.authService.isLoggedIn = JSON.parse(localStorage.getItem('admin'));
+    // localStorage.removeItem('admin'); // to clear it again.
+    // console.log("FERNW PISW TO admin 2222222222");
+
   }
   logout() {
     this.authService.logout();

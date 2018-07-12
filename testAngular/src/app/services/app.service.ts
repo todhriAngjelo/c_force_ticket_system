@@ -23,13 +23,14 @@ const httpOptions = {
      private _postUpdateURL = "http://localhost:8080/home/ticket/ticketRest/reserveTicket";
      private _loginURL = "http://localhost:8080/home/ticket/userRest/login";
      private _registerURL = "http://localhost:8080/home/ticket/userRest/register";
-     
+     public userID;
  
      constructor( private http: HttpClient,
                   private messageService: MessageService,
                   private router:Router,
                   public auth1: AuthService) {}
- 
+
+
      getPosts(): Observable<Tickets[]> {
 
         return this.http.get<Tickets[]>(this._getURL)
@@ -49,7 +50,7 @@ const httpOptions = {
 
   doPOST(ticket: Tickets | number): void{
     const id = typeof ticket === 'number' ? ticket : ticket.t_id;    
-    const url = `${this._postUpdateURL}/${id}`; 
+    const url = `${this._postUpdateURL}/${id}?${this.userID}`; 
     console.log("POOOOOOOOOOOOOOOOOST");
     console.log(url);
    
@@ -75,6 +76,7 @@ var m2;
   .subscribe( value =>
       {
         if(value===true){
+          this.userID=3;
           console.log("m einai true");
           this.auth1.login();
           this.router.navigate(['tickets']);
@@ -112,7 +114,36 @@ registerService(f: Users | string) {
 
 
 //______________________________________eeeeeeeeeeeND REGISTEEEEEEEEEEEEEEEEEEEEEEEEEERRRRRRR___________________________________________________________________
-       
+
+//______________________________________getReservedTickets___________________________________________________________________
+
+
+getReservedTickets(): Observable<Tickets[]> {
+
+  return this.http.get<Tickets[]>(this._getURL)
+  .pipe(
+    tap(ticket => this.log(`fetched ticket`)),
+    catchError(this.handleError('getReservedTickets', []))
+  );
+}
+//______________________________________getReservedTickets___________________________________________________________________
+    
+//______________________________________getReservedTickets___________________________________________________________________
+
+
+getUserDetails(): Observable<Users[]> {
+
+  return this.http.get<Users[]>(this._getURL)
+  .pipe(
+    tap(ticket => this.log(`fetched ticket`)),
+    catchError(this.handleError('getUserDetails', []))
+  );
+}
+//______________________________________getReservedTickets___________________________________________________________________
+    
+
+
+
   /** Log a HeroService message with the MessageService */
    /**
    * Handle Http operation that failed.

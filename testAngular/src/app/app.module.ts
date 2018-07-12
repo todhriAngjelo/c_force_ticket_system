@@ -22,6 +22,8 @@ import { TicketComponent } from './components/ticket/ticket.component';
 import { AppService } from "./services/app.service";
 import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { AuthService } from "./services/auth/auth.service";
+import { UserComponent } from './components/user/user.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +40,9 @@ import { AuthService } from "./services/auth/auth.service";
         PopularSeriesComponent,
         SerieComponent,
         UpcomingComponent,
-        TicketComponent
+        TicketComponent,
+        UserComponent,
+        AboutComponent
     ],
     imports: [
         BrowserModule,

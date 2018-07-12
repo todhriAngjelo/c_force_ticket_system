@@ -22,6 +22,11 @@ export class AuthGuardService implements CanActivate {
       localStorage.removeItem('key');
       localStorage.setItem('key', JSON.stringify(this.auth.isLoggedIn));
       console.log("APOTHIKEVW OTI EISAI LOGGED IN");
+
+      // localStorage.removeItem('admin');
+      // localStorage.setItem('admin', JSON.stringify(this.auth.isAdmin));
+      // console.log("APOTHIKEVW OTI EISAI admin");
+
       return true;
     }
     ngOnInit() { // your code here

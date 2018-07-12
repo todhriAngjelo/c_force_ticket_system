@@ -12,12 +12,16 @@ import { TicketComponent } from './components/ticket/ticket.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService} from './services/auth/auth-guard.service';
 import { AuthService } from './services/auth/auth.service';
+import { UserComponent } from './components/user/user.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 const routes: Routes = [
   {path: '', component: MoviesComponent},
   { path: 'tickets', component: TicketComponent,    canActivate: [AuthGuardService]  },
   { path: 'login', component: LoginComponent},
+  { path: 'about', component: AboutComponent},
+  { path: 'user', component: UserComponent, canActivate: [AuthGuardService] },
   { path: 'register', component: RegisterComponent },
   {path: 'movie/:id', component: MovieComponent},
   {path: 'tv/:id', component: SerieComponent},

@@ -27,9 +27,6 @@ export class LoginComponent implements OnInit {
         
   }
   
-<<<<<<< HEAD
-}
-=======
   logout() {
     this.authService.logout();
   }
@@ -38,4 +35,3 @@ export class LoginComponent implements OnInit {
   //_____________________________________
 
 }
->>>>>>> d69239190a64ce593b9e73a72fa61a922dad6340
