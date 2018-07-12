@@ -1,0 +1,3 @@
+INSERT INTO USER (u_Name, u_Pw, u_Fname) VALUES  ("ps1382","welcome123","Todhri Angjelo"), ("ps138","welcome1234","Todhri Angjelo");
+INSERT INTO TICKET (T_PRICE, T_TITLE, USER_ID,T_BOOKED,T_OVERVIEW,T_RATING,T_URLIMAGE) VALUES  ("15","Rocky 1",1,0,"Best Love movie","2.8","https://i.pinimg.com/originals/3c/e0/29/3ce029f78fa457813039176e27e518ac.jpg"),("12","Rocky 2",2,0,"Best Drama movie","7.8","https://img.posterlounge.co.uk/images/wbig/poster-rocky-ii-1502243.jpg"),("14","Rocky 3",2,0,"Best Documentary movie","8.2","https://www.mauvais-genres.com/22104/rocky-iii-movie-poster-29x41-in-1982-sylvester-stallone-mr-t.jpg"); 
+
