@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Tickets } from '../../posts';
-import { AppService } from '../../app.service';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'app-tickets',
-  templateUrl: './tickets.component.html',
-  styleUrls: ['./tickets.component.scss']
+  templateUrl: './ticket.component.html',
+  styleUrls: ['./ticket.component.css']
 })
-export class TicketsComponent implements OnInit {
+export class TicketComponent {
+    array: Array<any>;
 
   _postsArray: Tickets[];
  
@@ -23,17 +24,17 @@ export class TicketsComponent implements OnInit {
           )
   }
  
- hello(){
-     console.log("Helloooooo");
- }
 
   ngOnInit(): void {
+      
       this.getPosts();
   }
   
   
   doPOST(ticket: Tickets): void {
-     console.log("PUUUUUUT",ticket);
+     console.log("doPost on ticket.component.ts", ticket);
+     localStorage.removeItem('Array');
+    localStorage.setItem('Array', JSON.stringify(this.array));
     this.apiSerivce.doPOST(ticket) ;     };
 
     

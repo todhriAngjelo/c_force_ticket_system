@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../app.service';
+import { AppService } from '../../services/app.service';
 import { Users } from '../models/users';
+import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,8 @@ import { Users } from '../models/users';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private apiService: AppService) {}
+  constructor(private apiService: AppService,public authService: AuthService, public router: Router) {
+  }
   _usersArray: Users[];
 
   ngOnInit() {
@@ -24,4 +27,15 @@ export class LoginComponent implements OnInit {
         
   }
   
+<<<<<<< HEAD
 }
+=======
+  logout() {
+    this.authService.logout();
+  }
+
+
+  //_____________________________________
+
+}
+>>>>>>> d69239190a64ce593b9e73a72fa61a922dad6340

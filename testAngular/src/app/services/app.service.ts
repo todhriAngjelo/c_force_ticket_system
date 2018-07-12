@@ -1,34 +1,37 @@
 import {Injectable} from "@angular/core";
 import { Observable, of } from "rxjs"; 
 import "rxjs";
-import {Tickets} from "./posts";
-import { map, tap, catchError } from 'rxjs/operators'; 
+import {Tickets} from "./../posts";
+import { tap, catchError } from 'rxjs/operators'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MessageService } from "./message.service";
-import { Users } from "./components/models/users";
+import { MessageService } from "./../message.service";
+import { Users } from "./../components/models/users";
 import { Router } from "@angular/router";
+import { AuthGuardService } from "./auth/auth-guard.service";
+import { AuthService } from "./auth/auth.service";
 
- const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    
-  };
   
-
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  
+};
  @Injectable()
  export class AppService {
      [x: string]: any;
  
-     private _getURL = "http://localhost:8080/home/ticket/ticket/getAllTickets";
-     private _postUpdateURL = "http://localhost:8080/home/ticket/ticket/reserveTicket";
-     private _loginURL = "http://localhost:8080/home/ticket/user/login";
-     private _registerURL = "http://localhost:8080/home/ticket/user/register";
+     private _getURL = "http://localhost:8080/home/ticket/ticketRest/getAllAvailableTickets";
+     private _postUpdateURL = "http://localhost:8080/home/ticket/ticketRest/reserveTicket";
+     private _loginURL = "http://localhost:8080/home/ticket/userRest/login";
+     private _registerURL = "http://localhost:8080/home/ticket/userRest/register";
      
  
      constructor( private http: HttpClient,
                   private messageService: MessageService,
-                  private router:Router) {}
+                  private router:Router,
+                  public auth1: AuthService) {}
  
      getPosts(): Observable<Tickets[]> {
+
         return this.http.get<Tickets[]>(this._getURL)
         .pipe(
           tap(ticket => this.log(`fetched ticket`)),
@@ -37,19 +40,23 @@ import { Router } from "@angular/router";
      }
 
      load() {
-      location.reload()
+       console.log("LOADDDDDDDDDDDD");
+      location.reload();
       }
+      
 
+      
 
-  doPOST(ticket: Tickets | number): Observable<Tickets>{
+  doPOST(ticket: Tickets | number): void{
     const id = typeof ticket === 'number' ? ticket : ticket.t_id;    
     const url = `${this._postUpdateURL}/${id}`; 
-    return this.http
+    console.log("POOOOOOOOOOOOOOOOOST");
+    console.log(url);
+   
+    var m= this.http
         .post<Tickets>(url, httpOptions)
-                   .pipe(
-            tap(_ => this.log(`updated ticket ticket_id=${id}`)),
-            catchError(this.handleError<Tickets>('doPOST'))
-          );
+        .subscribe(_=> this.load());
+    console.log(m);
 }
 
 //LOGIIIIIIN_______________________________________________________
@@ -62,13 +69,14 @@ loginService(f: Users | string): Observable<Number>{
   const url = `${this._loginURL}?u_name=${uname}&u_pw=${pass}`; 
   console.log("LOGINSERVICEEEEEEEEEEEEEEEEE")
   console.log(url);
-
+var m2;
   var m=this.http
-  .get<Number>(url, httpOptions)
+  .get<Boolean>(url, httpOptions)
   .subscribe( value =>
       {
-        if(value===1){
-          console.log("m einai 1");
+        if(value===true){
+          console.log("m einai true");
+          this.auth1.login();
           this.router.navigate(['tickets']);
         }
         else{
@@ -78,8 +86,7 @@ loginService(f: Users | string): Observable<Number>{
       
       }  
     );
-  
-
+m2=m;
   return;
 }
 //___________________________________________________________________

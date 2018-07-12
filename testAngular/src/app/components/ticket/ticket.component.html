@@ -1,0 +1,74 @@
+<body>
+  <!-- <div class="container"class="center">
+    
+            <tr *ngFor="let post of _postsArray">
+  
+                  <div class="cardWrap">
+                          <div class="card cardLeft">
+                            <h1>{{post.t_title}}</h1>
+                            <div class="title">
+                              <h2>{{post.t_title}}</h2>
+                              <span>movie</span>
+                            </div>
+                            <div class="name">
+                              <h2>UserName</h2>
+                              <span>name</span>
+                            </div>
+                            <div class="seat">
+                              <h2>{{post.t_id}}</h2>
+                              <span>ID</span>
+                            </div> 
+                            <div class="time">
+                              <h2>12:00</h2>
+                              <span>time</span>
+                            </div>
+                            
+                          </div>
+                          <div class="card cardRight">
+                            <div class="eye"></div>
+                            <div class="number">
+                              <h3>{{post.t_id}}</h3>
+                              <span>ID</span>
+                            </div>
+                            <div class="barcode"></div>
+                          </div>
+                        
+                        </div>
+                <td class="text-center" style="width: 200px;"><button (click)="doPOST(post)" >BOOK</button></td>
+            </tr>
+           
+  
+  </div> -->
+
+
+
+
+  <div class="row" *ngFor="let post of _postsArray">
+      <div class="col-md-4">
+        <img [src]="post.t_urlImage" alt="" class="thumbnail"/>
+        <p>
+          <a class="btn btn-info btn-block" (click)="doPOST(post)" target="_blank">Book Now</a>
+        </p>
+      </div>
+      <div class="col-md-8">
+        <h2>{{post.t_title}}
+          <small class="label label-warning">
+            {{post.t_rating}}
+            <i class="glyphicon glyphicon-star"></i>
+          </small>
+        </h2>
+        <p></p>
+        <h3>Overview</h3>
+        <p>
+          {{post.t_overview}}
+        </p>
+        
+      </div>
+    </div>
+    _________________________________________________________________________________________________
+
+  </body>
+  
+        
+        
+  
