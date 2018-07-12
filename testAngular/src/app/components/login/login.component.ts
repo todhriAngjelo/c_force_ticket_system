@@ -23,5 +23,5 @@ export class LoginComponent implements OnInit {
     // this.apiService.loginService(uname,pass);
         
   }
-
+  
 }
