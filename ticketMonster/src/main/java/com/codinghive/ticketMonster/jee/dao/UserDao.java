@@ -45,8 +45,9 @@ public class UserDao {
         "SELECT u FROM User u WHERE u.u_Id = :u_Id", User.class).
         setParameter("u_Id", U_ID).getSingleResult();
     }
+    
 
-    public List<Ticket> getReservationsOfUsers(int u_Id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<User> getAllUserList() {
+        return em.createNamedQuery("User.getAll").getResultList();
     }
 }        

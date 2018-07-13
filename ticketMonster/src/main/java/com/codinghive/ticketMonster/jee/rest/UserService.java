@@ -1,4 +1,5 @@
 package com.codinghive.ticketMonster.jee.rest;
+import com.codinghive.ticketMonster.jee.model.User;
 import com.codinghive.ticketMonster.jee.model.Ticket;
 import com.codinghive.ticketMonster.jee.rest.ejb.TicketBL;
 import com.codinghive.ticketMonster.jee.rest.ejb.UserBL;
@@ -121,7 +122,34 @@ public class UserService {
     }
     
     
-    
+    @GET
+    @Produces("application/json")
+    @Path("/getAllUsers")
+    //https://www.tutorialspoint.com/restful/restful_first_application.htm
+    ///////////////////////////
+    public String getAllUsers() {
+        //necessary for appropriate json formating
+        String returnString = "[";
+        //Gson object initiation so i can call json methods
+        Gson gson = new Gson();
+        //list with tickets that i will store my ticket objects and toJson() transform them
+        List<User> ticketList = userBL.getAllUsers();
+        //loop for number of tickets found in database
+        for (int i = 0; i < ticketList.size(); i++) {
+            // 2. Java object to JSON, and assign to a String
+            String jsonInString = gson.toJson(ticketList.get(i));
+            //necessary for appropriate json formating
+            if (i != ticketList.size() - 1) {
+                returnString = returnString.concat(jsonInString + ",");
+            } else {
+                returnString = returnString.concat(jsonInString);
+            }
+        }
+        //necessary for appropriate json formating
+        returnString = returnString.concat("]");
+        LOGGER.info("Printing DATABASE Json:" + returnString);  
+        return returnString;
+    }
     
     
     

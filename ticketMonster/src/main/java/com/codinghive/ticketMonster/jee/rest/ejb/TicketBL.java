@@ -98,4 +98,5 @@ public class TicketBL {
         List<Ticket> ticketList = ticketDao.getAllReservedTicketsList();    
         return ticketList;    
     }
+
 }

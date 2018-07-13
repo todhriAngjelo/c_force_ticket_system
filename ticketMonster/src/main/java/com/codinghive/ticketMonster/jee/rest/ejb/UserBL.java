@@ -59,4 +59,9 @@ public class UserBL {
     public User getUserFromUname(String u_Name){
         return userDao.getUserFromUsername(u_Name).get(0);             
     }
+
+    public List<User> getAllUsers() {
+        List<User> userList = userDao.getAllUserList();    
+        return userList;
+    }
 }
