@@ -63,4 +63,11 @@ public class TicketDao {
             "SELECT u FROM Ticket u WHERE u.t_booked=1 AND u.user_Id = :u_Id", Ticket.class).
         setParameter("u_Id", u_Id).getResultList();
     }
+
+    //function that returns all tickets in DB in a List<Ticket> that are Available
+    /////////////////////////////////////    
+    public List<Ticket> getAllReservedTicketsList(){ 
+        return em.createQuery(
+            "SELECT u from Ticket u WHERE u.t_booked=1", Ticket.class).getResultList();
+    }     
 }

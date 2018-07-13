@@ -92,6 +92,7 @@ public class UserService {
             String gsonString = gson.toJson(userBL.getUserFromId(id));
             jsonReturnString = jsonReturnString.concat(gsonString);
             jsonReturnString = jsonReturnString.concat("]");
+            //dont ask why - Front end demanded it - angular is weird
             return jsonReturnString;
         }   
     }

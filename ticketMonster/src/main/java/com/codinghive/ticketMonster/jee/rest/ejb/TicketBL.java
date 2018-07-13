@@ -93,4 +93,9 @@ public class TicketBL {
     public List<Ticket> getReservationsOfUserById(int u_Id) {
         return ticketDao.getReservationsOfUserById(u_Id);             
     }
+
+    public List<Ticket> getAllReservedTicketsList() {
+        List<Ticket> ticketList = ticketDao.getAllReservedTicketsList();    
+        return ticketList;    
+    }
 }

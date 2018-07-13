@@ -55,6 +55,29 @@ public class TicketService {
         return returnString;
     }
     
+     @GET
+    @Produces("application/json")
+    @Path("/getAllReservedTickets")
+    //////////////////////////////////
+    public String getAllReservedTickets() {
+        List<Ticket> ticketList = ticketBL.getAllReservedTicketsList();
+        String returnString = "[";
+        Gson gson = new Gson();
+        for (int i = 0; i < ticketList.size(); i++) {
+            // 2. Java object to JSON, and assign to a String
+            String jsonInString = gson.toJson(ticketList.get(i));
+            //necessary for appropriate json formating
+            if (i != ticketList.size() - 1) {
+                returnString = returnString.concat(jsonInString + ",");
+            } else {
+                returnString = returnString.concat(jsonInString);
+            }
+        }
+        //necessary for appropriate json formating
+        returnString = returnString.concat("]");
+        LOGGER.info("Printing DATABASE Json:" + returnString);
+        return returnString;
+    }
     
     @GET
     @Produces("application/json")
@@ -118,6 +141,6 @@ public class TicketService {
         ticketBL.addTicketFromJson(crunchifyBuilder.toString());
         // return HTTP response 200 in case of success
         return Response.status(200).entity(crunchifyBuilder.toString()).build();
-    }       
+    }      
 }
 
