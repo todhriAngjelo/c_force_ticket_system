@@ -1,5 +1,6 @@
 package com.codinghive.ticketMonster.jee.rest.ejb;
 import com.codinghive.ticketMonster.jee.dao.UserDao;
+import com.codinghive.ticketMonster.jee.model.Ticket;
 import com.codinghive.ticketMonster.jee.model.User;
 import java.util.List;
 import javax.inject.Inject;
@@ -48,8 +49,8 @@ public class UserBL {
     //return user object by Id = this.id
     //returns null if object by Id = this.id not found
     ///////////////////////////////
-    public User getUserFromId(int U_ID) {
-        return userDao.getUserFromId(U_ID);             
+    public User getUserFromId(int u_Id) {
+        return userDao.getUserFromId(u_Id);             
     }     
     
     //return user object by u_Name = this.u_Name

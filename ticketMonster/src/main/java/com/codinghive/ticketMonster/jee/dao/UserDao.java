@@ -1,4 +1,5 @@
 package com.codinghive.ticketMonster.jee.dao;
+import com.codinghive.ticketMonster.jee.model.Ticket;
 import com.codinghive.ticketMonster.jee.model.User;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -43,5 +44,9 @@ public class UserDao {
         return em.createQuery(
         "SELECT u FROM User u WHERE u.u_Id = :u_Id", User.class).
         setParameter("u_Id", U_ID).getSingleResult();
+    }
+
+    public List<Ticket> getReservationsOfUsers(int u_Id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }        

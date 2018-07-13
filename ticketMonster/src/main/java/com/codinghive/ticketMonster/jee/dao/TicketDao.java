@@ -1,5 +1,6 @@
 package com.codinghive.ticketMonster.jee.dao;
 import com.codinghive.ticketMonster.jee.model.Ticket;
+import com.codinghive.ticketMonster.jee.model.User;
 import org.slf4j.Logger;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -56,4 +57,10 @@ public class TicketDao {
         return em.createQuery(
             "SELECT u from Ticket u WHERE u.t_booked=0", Ticket.class).getResultList();
     }     
+
+    public List<Ticket> getReservationsOfUserById(int u_Id) {
+        return em.createQuery(
+            "SELECT u FROM Ticket u WHERE u.t_booked=1 AND u.user_Id = :u_Id", Ticket.class).
+        setParameter("u_Id", u_Id).getResultList();
+    }
 }

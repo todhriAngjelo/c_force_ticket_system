@@ -1,9 +1,12 @@
 package com.codinghive.ticketMonster.jee.rest;
+import com.codinghive.ticketMonster.jee.model.Ticket;
+import com.codinghive.ticketMonster.jee.rest.ejb.TicketBL;
 import com.codinghive.ticketMonster.jee.rest.ejb.UserBL;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -12,7 +15,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -23,6 +25,8 @@ public class UserService {
     
     @Inject
     private UserBL userBL;
+    @Inject
+    private TicketBL ticketBL;
     private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
     
     @POST
@@ -78,15 +82,44 @@ public class UserService {
     @Produces("application/json")
     @Path("/getUserName/{id:[0-9][0-9]*}")
     public String getUserName(@PathParam("id") int id){
+        //dont ask why - Front end demanded it - angular is weird
+        String jsonReturnString = "[";
         if ( userBL.getUserFromId(id) == null ) {
             LOGGER.info("User by id: " + id + " not found.");
             return null;
         }else{
             Gson gson = new Gson();
             String gsonString = gson.toJson(userBL.getUserFromId(id));
-            return gsonString;
+            jsonReturnString = jsonReturnString.concat(gsonString);
+            jsonReturnString = jsonReturnString.concat("]");
+            return jsonReturnString;
         }   
     }
+    
+    @GET
+    @Produces("application/json")
+    @Path("/getReservationsOfUsers/{u_Id:[0-9][0-9]*}")
+    public String getReservationsOfUserById(@PathParam("u_Id") int u_Id){
+        String jsonReturnString = "[";
+        List<Ticket> ticketList = ticketBL.getReservationsOfUserById(u_Id);     
+        Gson gson = new Gson();
+        for (int i = 0; i < ticketList.size(); i++) {
+            // 2. Java object to JSON, and assign to a String
+            String jsonInString = gson.toJson(ticketList.get(i));
+            //necessary for appropriate json formating
+            if (i != ticketList.size() - 1) {
+                jsonReturnString = jsonReturnString.concat(jsonInString + ",");
+            } else {
+                jsonReturnString = jsonReturnString.concat(jsonInString);
+            }
+        }
+        //necessary for appropriate json formating
+        jsonReturnString = jsonReturnString.concat("]");
+        LOGGER.info("Printing DATABASE Json:" + jsonReturnString);
+        return jsonReturnString;
+    }
+    
+    
     
     
     
