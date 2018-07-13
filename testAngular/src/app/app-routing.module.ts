@@ -16,6 +16,8 @@ import { UserComponent } from './components/user/user.component';
 import { AboutComponent } from './components/about/about.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AuthGuard2Service } from './services/auth-guard2.service';
+import { AllUsersComponent } from './components/admin/all-users/all-users.component';
+import { AllTicketsComponent } from './components/admin/all-tickets/all-tickets.component';
 
 
 const routes: Routes = [
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'user', component: UserComponent, canActivate: [AuthGuardService] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard2Service] },
+  { path: 'admin/allusers', component: AllUsersComponent, canActivate: [AuthGuard2Service] },
+  { path: 'admin/alltickets', component: AllTicketsComponent, canActivate: [AuthGuard2Service] },
   { path: 'register', component: RegisterComponent },
   {path: 'movie/:id', component: MovieComponent},
   {path: 'tv/:id', component: SerieComponent},

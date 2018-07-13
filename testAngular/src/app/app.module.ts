@@ -25,6 +25,10 @@ import { AuthService } from "./services/auth/auth.service";
 import { UserComponent } from './components/user/user.component';
 import { AboutComponent } from './components/about/about.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { GaugeComponent } from "./components/admin/gauge/gauge.component";
+import { GaugeModule } from "./components/admin/gauge";
+import { AllUsersComponent } from './components/admin/all-users/all-users.component';
+import { AllTicketsComponent } from './components/admin/all-tickets/all-tickets.component';
 
 @NgModule({
     declarations: [
@@ -44,7 +48,9 @@ import { AdminComponent } from './components/admin/admin.component';
         TicketComponent,
         UserComponent,
         AboutComponent,
-        AdminComponent
+        AdminComponent,
+        AllUsersComponent,
+        AllTicketsComponent
     ],
     imports: [
         BrowserModule,
@@ -52,7 +58,8 @@ import { AdminComponent } from './components/admin/admin.component';
         HttpModule,
         HttpClientModule,
         JsonpModule,
-        AppRoutingModule
+        AppRoutingModule,
+        GaugeModule
     ],
     providers: [MoviesService, AppService, AuthService, AuthGuardService],
     bootstrap: [

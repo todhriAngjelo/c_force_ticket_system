@@ -1,0 +1,8 @@
+row{
+    border-style: solid;
+    border-color: red;}
+.box{
+    padding: 10px;
+    border: 5px solid rgb(255, 255, 255);
+    margin: 0;
+}

@@ -26,6 +26,8 @@ const httpOptions = {
      private _getUserInfosURL = "http://localhost:8080/home/ticket/userRest/getUserName";
      private _getTicketByUserURL = "http://localhost:8080/home/ticket/userRest/getReservationsOfUsers";
      private _cancelTicketURL = "http://localhost:8080/home/ticket/ticketRest/cancelReservation";
+     private _getAllUsersURL = "http://localhost:8080/home/ticket/userRest/getAllUsers";
+     private _getAllTicketsURL = "http://localhost:8080/home/ticket/ticketRest/getAllReservedTickets";
 
      public userID;
  
@@ -210,7 +212,28 @@ getReservedTickets(): Observable<Tickets[]> {
 
 
 
+//______________________________________getAllUsers__________________________getAllUsers_____________________getAllUsers_______
 
+getAllUsers(): Observable<Users[]> {
+  
+  return this.http.get<Users[]>(this._getAllUsersURL)
+  .pipe(
+    tap(user => this.log(`fetched ticket`)),
+    catchError(this.handleError('getAllUsers', []))
+  );
+}
+//______________________________________getAllUsers__________________________getAllUsers_____________________getAllUsers_______
+
+//____________________________________getAllTickets_____________________getAllTickets
+getAllTickets(): Observable<Tickets[]> {
+  
+  return this.http.get<Tickets[]>(this._getAllTicketsURL)
+  .pipe(
+    tap(ticket => this.log(`fetched ticket`)),
+    catchError(this.handleError('getAllTickets', []))
+  );
+}
+//______________________________________getAllTickets___________________getAllTickets
   /** Log a HeroService message with the MessageService */
    /**
    * Handle Http operation that failed.
