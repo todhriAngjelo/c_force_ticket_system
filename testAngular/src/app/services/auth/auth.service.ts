@@ -12,6 +12,8 @@ export class AuthService {
   login(): void {
     console.log("login in auth.service.ts");
     this.isLoggedIn = true;
+    this.isAdmin=false;
+
   
   }
 
@@ -30,5 +32,9 @@ export class AuthService {
     localStorage.removeItem('key');
     localStorage.setItem('key', JSON.stringify(this.isLoggedIn));
     console.log("APOTHIKEVW OTI DEN EISAI LOGGED IN");
+    
+    localStorage.removeItem('admin');
+    localStorage.setItem('admin', JSON.stringify(this.isAdmin));
+    console.log("APOTHIKEVW OTI DEN EISAI LOGGED admin");
   }
 }

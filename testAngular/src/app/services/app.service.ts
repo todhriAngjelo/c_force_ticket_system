@@ -72,18 +72,23 @@ loginService(f: Users | string): Observable<Number>{
   console.log(url);
 var m2;
   var m=this.http
-  .get<Boolean>(url, httpOptions)
+  .post<Number>(url, httpOptions)
   .subscribe( value =>
       {
-        if(value===true){
-          this.userID=3;
-          console.log("m einai true");
-          this.auth1.login();
-          this.router.navigate(['tickets']);
-        }
-        else{
+        if(value===0){
           console.log("m einai 0");
 
+        }
+        else{
+          this.userID=value;
+            console.log(this.userID);
+          if(this.userID===1){
+            this.auth1.loginAdmin();
+            this.router.navigate(['admin']);
+          }else{
+          this.auth1.login();
+          this.router.navigate(['tickets']);
+          }
         }
       
       }  

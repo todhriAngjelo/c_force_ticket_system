@@ -18,6 +18,7 @@
 
         <li routerLinkActive="active" ><a routerLink="/tickets" *ngIf="authService.isLoggedIn">Avaliable Tickets</a></li>
         <li routerLinkActive="active" ><a routerLink="/user" *ngIf="authService.isLoggedIn">User</a></li>
+        <li routerLinkActive="active" ><a routerLink="/admin" *ngIf="authService.isAdmin">Admin</a></li>
         
         <li routerLinkActive="active"><a routerLink="/login" *ngIf="!authService.isLoggedIn">Login</a></li>
         <li routerLinkActive="active"><a (click)="logout()" *ngIf="authService.isLoggedIn">Logout</a></li>

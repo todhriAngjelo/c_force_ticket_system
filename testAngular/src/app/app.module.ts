@@ -24,6 +24,7 @@ import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { AuthService } from "./services/auth/auth.service";
 import { UserComponent } from './components/user/user.component';
 import { AboutComponent } from './components/about/about.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
     declarations: [
@@ -42,7 +43,8 @@ import { AboutComponent } from './components/about/about.component';
         UpcomingComponent,
         TicketComponent,
         UserComponent,
-        AboutComponent
+        AboutComponent,
+        AdminComponent
     ],
     imports: [
         BrowserModule,
