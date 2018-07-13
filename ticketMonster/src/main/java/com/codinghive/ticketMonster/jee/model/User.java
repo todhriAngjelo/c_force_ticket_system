@@ -28,10 +28,12 @@ public class User implements Serializable {
     private String u_Fname;
     @Column
     private boolean u_Admin;
-
-//    @Column
-//    private List<Ticket> listOfTickets;
-
+    
+//    //implementation of hashmap in order to be able to find the ticket or remove the ticket
+//    @OneToMany(fetch = EAGER, cascade = ALL)
+//    @JoinColumn
+//    private HashMap<Integer,Ticket> listOfTickets;
+//
 
 
     //GETTERS START HERE
@@ -80,13 +82,18 @@ public class User implements Serializable {
     //SETTERS END HERE
 
     
-    
-    
 
-    public void addTicketToArray(Ticket ticket) {
-        //to DO
-    }
-    
+//    
+//    //insertion of Ticket object into the User's listOfTickets with Key u_Id ( HashMap - listOfTickets )
+//    public void addTicketToArray(Integer u_Id, Ticket ticket) {
+//        listOfTickets.put(u_Id, ticket);
+//    }
+//    
+//    //returning ticket with u_Id from User's listOfTickets and returning the Ticket Object
+//    public Ticket removeTicketFromArray(Integer u_Id, Ticket ticket) {
+//        return listOfTickets.remove(u_Id);
+//    }
+//    
     
     public User(String u_Name, String u_Pw, String u_Fname) {
         this.u_Name = u_Name;

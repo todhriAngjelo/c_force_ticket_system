@@ -30,17 +30,18 @@ public class UserBL {
     
     //login function that brings user entity and checks pw and username fields if match with logIn function parameters
     //////////////////////////////////////////////
-    public boolean logIn(String u_name, String u_pw){
+    public Integer logIn(String u_name, String u_pw){
        //find entry with u_name = this.u_name
        //probably not so safe
+       //getting user with index 0 because getUserFromUsername returns List
        User user = userDao.getUserFromUsername(u_name).get(0);
        //print at console
        LOGGER.info("User: " + user);
        //returns integer 1 if user.get_pw equals to this.pw or 0 if not
        if (user.getU_Pw().equals(u_pw)){
-           return true;
+           return user.getU_Id();
        }else{
-           return false;
+           return 0;
         }
     }
    
@@ -50,4 +51,11 @@ public class UserBL {
     public User getUserFromId(int U_ID) {
         return userDao.getUserFromId(U_ID);             
     }     
+    
+    //return user object by u_Name = this.u_Name
+    //returns null if object by u_Name = this.u_Name not found
+    ///////////////////////////////
+    public User getUserFromUname(String u_Name){
+        return userDao.getUserFromUsername(u_Name).get(0);             
+    }
 }

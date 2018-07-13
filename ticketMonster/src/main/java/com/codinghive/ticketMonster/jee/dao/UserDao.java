@@ -41,7 +41,7 @@ public class UserDao {
     public User getUserFromId(int U_ID) {
         //returns ticket entity by id  = this.id
         return em.createQuery(
-        "SELECT u FROM User u WHERE u.u_id = :U_ID", User.class).
-        setParameter("U_ID", U_ID).getSingleResult();
+        "SELECT u FROM User u WHERE u.u_Id = :u_Id", User.class).
+        setParameter("u_Id", U_ID).getSingleResult();
     }
 }        

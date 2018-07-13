@@ -82,19 +82,19 @@ public class TicketService {
       
     @POST
     @Produces("application/json")
-    @Path("/cancelReservation/{id:[0-9][0-9]*}")
+    @Path("/cancelReservation/{ticket_Id:[0-9][0-9]*}")
     /////////////////////////////////////////////////
-    public String cancelTicket(@PathParam("id") int id){
-        ticketBL.cancelTicket(id);
+    public String cancelTicket(@PathParam("ticket_Id") int ticket_Id){
+        ticketBL.cancelTicket(ticket_Id);
         return getAllTickets();
     }
    
     @POST
     @Produces("application/json")
-    @Path("/reserveTicket/{ticket_id:[0-9][0-9]*}")
+    @Path("/reserveTicket/{ticket_Id:[0-9][0-9]*}/{user_Id:[0-9][0-9]*}")
     /////////////////////////////////////////////////////////
-    public String reserveTicket(@PathParam("ticket_id") int id) {
-        ticketBL.reserveTicket(id);
+    public String reserveTicket(@PathParam("ticket_Id") int t_Id,@PathParam("user_Id") int u_Id) {
+        ticketBL.reserveTicket(t_Id,u_Id);
         return getAllTickets();
     }
     

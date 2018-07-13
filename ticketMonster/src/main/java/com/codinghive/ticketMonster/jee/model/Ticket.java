@@ -1,5 +1,6 @@
 package com.codinghive.ticketMonster.jee.model;
 import java.io.Serializable;
+import javax.annotation.Nullable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,8 @@ public class Ticket implements Serializable {
     private double t_price;
 
     @Column
-    private int user_Id;
+    @Nullable
+    private Integer user_Id;
 
     @Column
     private int t_booked;
@@ -97,7 +99,7 @@ public class Ticket implements Serializable {
         this.t_price = t_price;
     }
 
-    public void setUser_Id(int user_Id) {
+    public void setUser_Id(Integer user_Id) {
         this.user_Id = user_Id;
     }
 
@@ -108,7 +110,7 @@ public class Ticket implements Serializable {
 
 //   Constructors ------------------------
 
-    public Ticket(String t_title, double t_price, int user_Id, int t_booked, String t_overview, String t_rating , String t_urlImage) {
+    public Ticket(String t_title, double t_price, Integer user_Id, int t_booked, String t_overview, String t_rating , String t_urlImage) {
         this.t_title = t_title;
         this.t_rating = t_rating;
         this.t_overview = t_overview;

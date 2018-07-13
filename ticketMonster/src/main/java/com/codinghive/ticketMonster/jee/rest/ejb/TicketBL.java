@@ -30,11 +30,11 @@ public class TicketBL {
     
     //function that communicates with database in order to reserve a ticket ( change t_booked flag from 0 to 1 ) - function called by Rest End point
     ////////////////////////////////
-    public boolean reserveTicket(int id) {
-        Ticket ticket = ticketDao.getTicketById(id);
+    public boolean reserveTicket(int t_Id, int u_Id) {
+        Ticket ticket = ticketDao.getTicketById(t_Id);
         // if ticket id not found entity manager will return null to the ticket object
         if ( ticket == null){
-            LOGGER.info("Ticket with id: " + id + " doesn't exist.");
+            LOGGER.info("Ticket with id: " + t_Id + " doesn't exist.");
             return false;
         }
         //get ticket bookedFlag ( 0 or 1 ) into int variable
@@ -46,14 +46,15 @@ public class TicketBL {
         } else {
             //communication with database is on
             ticket.setT_booked(1);
+            ticket.setUser_Id(u_Id);
             //communication with database is of
             ticketDao.dbUpdate(ticket);
             return true;
         }
     }
     
-     public boolean  cancelTicket(int id) {
-        Ticket ticket = ticketDao.getTicketById(id);
+     public boolean  cancelTicket(int t_Id) {
+        Ticket ticket = ticketDao.getTicketById(t_Id);
         // if ticket id not found entity manager will return null to the ticket object at line 37
         if ( ticket == null){
             LOGGER.info("Ticket with id:" + ticket.getUser_Id() + " doesn't exist.");
@@ -67,6 +68,8 @@ public class TicketBL {
             return false;
         } else {
             ticket.setT_booked(0);
+            ticket.setUser_Id(null);
+
             LOGGER.info("Ticket:" + ticket + "is now canceled from the user by ID: " + ticket.getT_id());
             ticketDao.dbUpdate(ticket);
             return true;

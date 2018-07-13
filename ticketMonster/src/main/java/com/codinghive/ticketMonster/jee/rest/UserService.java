@@ -12,6 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -55,15 +56,22 @@ public class UserService {
     }   
     
     
-    @GET
-    @Produces("text/plain")
-    //login rest service which logins user ( returns true or false to the client ) if user with username u_name is found and his pw matches u_pw
+    @POST
+    @Produces("application/json") 
+    @Path("/login/")
+    //Probably not BEST PRACTICE but there was no time for better implementation
+    //login rest service which logins user ( returns userId if user found or 0 if not ) if user with username u_name is found and his pw matches u_pw
     //https://vrsbrazil.wordpress.com/2013/08/07/passing-parameters-to-a-restful-web-service/
     ////////////////
-    @Path("/login/")
     public String logIn(@QueryParam("u_name") String u_name, @QueryParam("u_pw") String u_pw) {
-        Boolean bool= userBL.logIn(u_name,u_pw);
-        return  bool.toString();
+        Integer logedInUserId = userBL.logIn(u_name,u_pw);
+        if (logedInUserId != 0){ // convention we followed for user not existing
+            //returns String because Produces couldnt allow me to return integer
+            return logedInUserId.toString();
+        }else{
+            //returns String because Produces couldnt allow me to return integer
+            return "0";
+        }
     }
     
     @GET
