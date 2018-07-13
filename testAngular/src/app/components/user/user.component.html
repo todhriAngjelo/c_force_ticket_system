@@ -1,13 +1,13 @@
 
-<div align="center">
+<div align="center"*ngFor="let post of _userArray" >
     <div class="row">
     
       <div class=" col-sm-12 toppad" >
  
  
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">Sheena Shrestha 
+        <div class="panel panel-info" >
+          <div class="panel-heading"  >
+            <h3 class="panel-title">{{post.u_Fname}}
               &nbsp;
               <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
             </h3>
@@ -35,11 +35,11 @@
                   <tbody>
                     <tr>
                       <td>Full Name:</td>
-                      <td>Sheena Shrestha </td>
+                      <td>{{post.u_Fname}}</td>
                     </tr>
                     <tr>
                       <td>User Name:</td>
-                      <td>otinanai</td>
+                      <td>{{post.u_Name}}</td>
                     </tr>
                     <!-- <tr>
                       <td>Date of Birth</td>
@@ -81,6 +81,31 @@
           
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="row" *ngFor="let post of _ticketUserArray">
+    <div class="col-md-4">
+      <img [src]="post.t_urlImage" alt="" class="thumbnail"/>
+      
+    </div>
+    <div class="col-md-8">
+      <h2>{{post.t_title}}
+        <small class="label label-warning">
+          {{post.t_rating}}
+          <i class="glyphicon glyphicon-star"></i>
+        </small>
+      </h2>
+      <p></p>
+      <h3>Overview</h3>
+      <p>
+        {{post.t_overview}}
+      </p>
+      <div>
+        <p>
+        <a class="btn btn-info btn-block btnred" (click)="cancelBooking(post)" target="_blank"><b>Cancel Booking</b></a>
+      </p>
+    </div>
     </div>
   </div>
 

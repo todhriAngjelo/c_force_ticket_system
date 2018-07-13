@@ -23,6 +23,10 @@ const httpOptions = {
      private _postUpdateURL = "http://localhost:8080/home/ticket/ticketRest/reserveTicket";
      private _loginURL = "http://localhost:8080/home/ticket/userRest/login";
      private _registerURL = "http://localhost:8080/home/ticket/userRest/register";
+     private _getUserInfosURL = "http://localhost:8080/home/ticket/userRest/getUserName";
+     private _getTicketByUserURL = "http://localhost:8080/home/ticket/userRest/getReservationsOfUsers";
+     private _cancelTicketURL = "http://localhost:8080/home/ticket/ticketRest/cancelReservation";
+
      public userID;
  
      constructor( private http: HttpClient,
@@ -50,7 +54,7 @@ const httpOptions = {
 
   doPOST(ticket: Tickets | number): void{
     const id = typeof ticket === 'number' ? ticket : ticket.t_id;    
-    const url = `${this._postUpdateURL}/${id}?${this.userID}`; 
+    const url = `${this._postUpdateURL}/${id}/${this.userID}`; 
     console.log("POOOOOOOOOOOOOOOOOST");
     console.log(url);
    
@@ -82,6 +86,12 @@ var m2;
         else{
           this.userID=value;
             console.log(this.userID);
+
+      localStorage.removeItem('userIDDD');
+      localStorage.setItem('userIDDD', JSON.stringify(this.userID));
+      console.log("APOTHIKEVW To USERID sou sto loginService() tou app.service.ts");
+          
+      
           if(this.userID===1){
             this.auth1.loginAdmin();
             this.router.navigate(['admin']);
@@ -124,8 +134,24 @@ registerService(f: Users | string) {
 
 
 getReservedTickets(): Observable<Tickets[]> {
+  console.log("FERNW PISW TO userIDDD");
 
-  return this.http.get<Tickets[]>(this._getURL)
+  this.userID = JSON.parse(localStorage.getItem('userIDDD'));
+   localStorage.removeItem('userIDDD'); // to clear it again.
+   console.log(this.userID);
+
+   console.log("FERNW PISW TO admin 2222222222");
+
+
+
+  console.log(this.userID);
+  localStorage.removeItem('userIDDD');
+    localStorage.setItem('userIDDD', JSON.stringify(this.userID));
+    console.log("APOTHIKEVW To USERID sou sto getReservedTickets() tou app.service.ts");
+
+  const nurl = `${this._getTicketByUserURL}/${this.userID}`; 
+  console.log(nurl);
+  return this.http.get<Tickets[]>(nurl)
   .pipe(
     tap(ticket => this.log(`fetched ticket`)),
     catchError(this.handleError('getReservedTickets', []))
@@ -133,19 +159,55 @@ getReservedTickets(): Observable<Tickets[]> {
 }
 //______________________________________getReservedTickets___________________________________________________________________
     
-//______________________________________getReservedTickets___________________________________________________________________
+
+//______________________________________getUserInfos___________________________________getUserInfos_______________________getUserInfos_________
+
+  getUserDetails(): Observable<Users[]> {
+    
+    console.log("FERNW PISW TO userIDDD");
+
+    this.userID = JSON.parse(localStorage.getItem('userIDDD'));
+     localStorage.removeItem('userIDDD'); // to clear it again.
+     console.log(this.userID);
+
+     console.log("FERNW PISW TO admin 2222222222");
 
 
-getUserDetails(): Observable<Users[]> {
 
-  return this.http.get<Users[]>(this._getURL)
+    console.log(this.userID);
+    localStorage.removeItem('userIDDD');
+      localStorage.setItem('userIDDD', JSON.stringify(this.userID));
+      console.log("APOTHIKEVW To USERID sou sto getUserDetails() tou app.service.ts");
+    const userurl = `${this._getUserInfosURL}/${this.userID}`; 
+    console.log(userurl)
+
+  return this.http.get<Users[]>(userurl)
   .pipe(
     tap(ticket => this.log(`fetched ticket`)),
     catchError(this.handleError('getUserDetails', []))
   );
 }
-//______________________________________getReservedTickets___________________________________________________________________
-    
+
+
+//______________________________________getUserInfos__________________________________getUserInfos_________________________getUserInfos________
+
+//______________________________________CancelTickeeeeeeet__________________________________CancelTickeeeeeeet_________________________CancelTickeeeeeeet________
+
+
+        cancelTicket(ticket: Tickets | number): void{
+          const id = typeof ticket === 'number' ? ticket : ticket.t_id;    
+          const url = `${this._cancelTicketURL}/${id}`; 
+          console.log("cancelTicket in app.service.ts");
+          console.log(url);
+        
+          var m= this.http
+              .post<Tickets>(url, httpOptions)
+              .subscribe(_=> this.load());
+          console.log(m);
+        }
+
+//______________________________________CancelTickeeeeeeet__________________________________CancelTickeeeeeeet_________________________CancelTickeeeeeeet________
+
 
 
 
