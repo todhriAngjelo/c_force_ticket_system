@@ -1,0 +1,19 @@
+<div class="row" *ngFor="let post of _postsArray">
+    <!-- <div class="col-md-4">
+      <p>
+        <a class="btn btn-info btn-block" (click)="doPOST(post)" target="_blank">Book Now</a>
+      </p>
+    </div> -->
+
+    <div class="col-md-8 box">
+      <h2>User ID:  {{post.u_Id}} </h2>
+      <h2>UserName:  {{post.u_Name}}
+        
+      </h2>
+      <p></p>
+      <h3>Full Name:  {{post.u_Fname}}</h3>
+      <a class="btn btn-info btn-block" (click)="doPOST(post)" target="_blank">Reset Password</a>
+
+    </div>
+    <br>
+  </div>

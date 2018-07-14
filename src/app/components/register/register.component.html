@@ -1,0 +1,53 @@
+<br>
+<html>
+
+<head>
+  <title>VIP Cinema</title>
+
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+  function hideURLbar(){ window.scrollTo(0,1); } </script>
+  <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'><link href='//fonts.googleapis.com/css?family=Raleway+Dots' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <!--header-->
+	<div class="header-w3l">
+      <h1>VIP Cinema</h1>
+    </div>
+  <!--//header-->
+<!--main-->
+  <div class="main-agileits" align="center">
+    <h2 class="sub-head">Sign Up</h2>
+      <div class="sub-main">	
+        <form #f="ngForm" (ngSubmit)="register(f.value)">
+          <div>
+          <input placeholder="User Name" name="u_Name" class="name" type="text" required="" ngModel>
+            <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br>
+          </div>
+          <input placeholder="Full Name" name="u_Fname" class="name2" type="text" required="" ngModel>
+            <span class="icon2"><i class="fa fa-user" aria-hidden="true"></i></span><br>
+
+          <!-- <input placeholder="Phone Number" name="Number" class="number" type="text" required="">
+            <span class="icon3"><i class="fa fa-phone" aria-hidden="true"></i></span><br> -->
+
+          <!-- <input placeholder="Email" name="mail" class="mail" type="text" required="">
+            <span class="icon4"><i class="fa fa-envelope" aria-hidden="true"></i></span><br> -->
+
+          <input  placeholder="Password" name="Password" class="pass" type="password" required="">
+            <span class="icon3"><i class="fa fa-unlock" aria-hidden="true"></i></span><br>
+          <input  placeholder="Confirm Password" name="u_Pw" class="pass" type="password" required="" ngModel>
+            <span class="icon4"><i class="fa fa-unlock" aria-hidden="true"></i></span><br>
+          
+          <input type="submit" value="sign up">
+        </form>
+      </div>
+      <div class="clear"></div>
+  </div>
+<!--//main-->
+
+  <!--footer-->
+  <div class="footer-w3">
+  </div>
+  <!--//footer-->
+</body>
+</html>

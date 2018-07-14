@@ -1,0 +1,75 @@
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+        aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/"><strong style="color:blue; font-size: 1.2em;">C_Force</strong> / Movie Booking System</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="/upcoming">Upcoming Movies</a></li>
+        <!-- <li routerLinkActive="active" ><a routerLink="/popular/series">Series</a></li>        -->
+        <li routerLinkActive="active" ><a routerLink="/about">About</a></li>
+
+        <li routerLinkActive="active" ><a routerLink="/tickets" *ngIf="authService.isLoggedIn">Avaliable Tickets</a></li>
+        <li routerLinkActive="active" ><a routerLink="/user" *ngIf="authService.isLoggedIn">User</a></li>
+        <li routerLinkActive="active" ><a routerLink="/admin" *ngIf="authService.isAdmin">Admin</a></li>
+        
+        <li routerLinkActive="active"><a routerLink="/login" *ngIf="!authService.isLoggedIn">Login</a></li>
+        <li routerLinkActive="active"><a (click)="logout()" *ngIf="authService.isLoggedIn">Logout</a></li>
+      </ul>
+
+    </div>
+
+    <!-- /.nav-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- /.navbar -->
+<!--<div class="container">
+  <div class="section">
+    <router-outlet></router-outlet>
+  </div>
+</div>-->
+<div class="container-fluid app-container">
+  <div class="row">
+  
+
+    
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".movies-cat">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse movies-cat">
+          <div class="panel-heading">Movies Category</div>
+          <ul class="nav nav-stacked">
+            <a routerLink="/genres/{{genre.id}}/{{genre.name}}" routerLinkActive="active" class="list-group-item" *ngFor="let genre of genres">{{genre.name}}</a>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </nav>
+    </div>
+    <!--/end left column-->
+    <!--/.sidebar-offcanvas-->
+    <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+      <router-outlet></router-outlet>
+  </div>
+    <!--/.col-xs-12.col-sm-9-->
+  </div>
+  <!--/row-->
+  <hr>
+  <footer>
+    <p>&copy; Copyright 2018 C_Force Movies, Inc.</p>
+  </footer>
+</div>
+<!--/.container-->

@@ -1,0 +1,39 @@
+<body>
+	<h1>Login Form</h1>
+	<div class="main-agile">
+		<div class="alert-close"> </div>
+		<div class="content-wthree">
+		<div class="circle-w3layouts"></div>
+			<h2>Login</h2>
+			<form #f="ngForm" (ngSubmit)="getLog(f.value)" > 
+				<!-- onsubmit="getLog(uname,pass);return false;"								 -->
+				<div class="inputs-w3ls">
+									<i class="fa fa-user" aria-hidden="true"></i>
+									<input type="text" name="u_Name" placeholder="Username" required="" id="uname" ngModel/>
+								</div>
+								<div class="inputs-w3ls">
+									<i class="fa fa-key" aria-hidden="true"></i>
+									<input type="password" name="u_Pw" placeholder="Password" required="" id="pass" ngModel/>
+								</div>
+									<input type="submit" value="LOGIN" *ngIf="!authService.isLoggedIn">
+									<!-- <div class="wthree-text"> 
+										<ul> 
+											<li> <a href="#">Forgot password?</a> </li>
+										</ul>
+									</div>   -->
+									<div class="wthree-text"> 
+											<ul> 
+												<li> <a routerLink="/register">Don't have an acount? Register.</a> </li>
+											</ul>
+										</div>  
+								</form>
+		</div>
+	</div>
+	<div class="footer-w3l">
+		<p class="agileinfo"> &copy; C_Force | 2018 All Rights Reserved </p>
+	</div>
+
+
+	<!-- _________________________________________________________________________ -->
+	
+</body>

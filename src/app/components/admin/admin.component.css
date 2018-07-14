@@ -1,0 +1,118 @@
+
+ng-gauge{
+    margin: 16px;
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+  }
+  .orange{
+      background-color: rgb(255, 102, 0);
+  }
+  button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+  }
+  
+  button:hover {background-color: #3e8e41}
+  
+  button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 1px black;
+    transform: translateY(4px);
+  }
+
+.w3-border {
+    border: 1px solid #ccc !important;
+}
+
+.w3-container, .w3-panel {
+    border-radius: 15px;
+
+    padding: 0.01em 16px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+}
+.w3-round-xlarge {
+    border-radius: 16px;
+}
+.user-row {
+    margin-bottom: 14px;
+}
+
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+
+.dropdown-user:hover {
+    cursor: pointer;
+}
+
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+
+
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{margin-top:20px;
+}
+
+.thumbnail{
+    width: 100%;
+    height: 100%;
+}
+.btnred{
+    background-color: rgb(201, 45, 45);
+}
+.div12 {
+    width:95%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto ;
+}
+
+  
+  .foo2 {
+    display:inline;
+    background: #13b4ff;
+  }
+  
+  .foo1 {
+    display:inline;
+    background: #fd1c49;
+  }
+
+  .foo3 {
+    display:inline;
+    background: #f0c800;
+  }
+  .foo4 {
+    display:inline;
+    background: #841386;
+  }
+  .foo5 {
+    display:inline;
+    background: #FF6E00;
+  }

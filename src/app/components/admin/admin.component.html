@@ -1,0 +1,66 @@
+
+<h1>Admin Panel</h1>
+<div class="w3-container orange">
+  </div>
+ <div align="center"> 
+<ng-gauge
+  [bgRadius] = nautilusGraph.bgRadius
+  [bgColor] = nautilusGraph.bgColor
+  [rounded] = nautilusGraph.rounded
+  [reverse] = nautilusGraph.reverse
+  [animationSecs] = nautilusGraph.animationSecs
+  [segments] = nautilusGraph.segments>
+</ng-gauge>
+<ng-gauge
+  [bgRadius] = progressGraph.bgRadius
+  [bgColor] = progressGraph.bgColor
+  [rounded] = progressGraph.rounded
+  [reverse] = progressGraph.reverse
+  [animationSecs] = progressGraph.animationSecs
+  [labels] = progressGraph.labels
+  [segments] = progressGraph.segments>
+</ng-gauge></div>
+<div class="w3-container orange">
+  </div>
+
+<div align="center" class="div12">
+    <div class=" foo1">  Action  </div> &nbsp;&nbsp;
+    <div class=" foo2">  Comedy  </div> &nbsp;&nbsp;
+    <div class=" foo3">  Drama  </div> &nbsp;&nbsp;
+    <div class=" foo4">  Romance  </div> &nbsp;&nbsp;
+    <div class=" foo5">  Western  </div> &nbsp;&nbsp;
+</div>
+
+
+
+
+
+  <div class="w3-container orange">
+    </div>
+    <br>
+<div class="panel panel-info"  *ngFor="let post of _userArray">
+    <div class="panel-body">
+        <div class=" col-md-9 col-lg-9 "> 
+            <div class="panel-body">
+                <b>Hello {{post.u_Fname}}, your are the Master!</b>  
+              </div> 
+            <div class="panel-body">
+              <b>Full Name:</b>  {{post.u_Fname}}
+            </div> 
+            <div class="panel-body">
+                <b>User Name:</b>  {{post.u_Name}}
+              </div> 
+          </div>
+        </div>
+
+    </div>
+<br>
+
+<br>
+
+<div class="w3-container orange">
+
+  <button routerLink="/admin/allusers">All Users</button>  &nbsp;&nbsp;&nbsp;&nbsp;
+  <button routerLink="/admin/alltickets">All Tickets</button>
+
+</div>
