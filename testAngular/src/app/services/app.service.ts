@@ -113,7 +113,7 @@ m2=m;
 
 //______________________________________REGISTEEEEEEEEEEEEEEEEEEEEEEEEEERRRRRRR___________________________________________________________________
 
-registerService(f: Users | string) {
+registerService(f: Users | string): any{
   const uname = typeof f==='string' ? f : f.u_Name;
   const fname = typeof f==='string' ? f: f.u_Fname;
   const pass = typeof f==='string' ? f : f.u_Pw;
@@ -125,9 +125,7 @@ registerService(f: Users | string) {
         console.log(body2);
  // var test =this.http.post(this._registerURL, body, httpOptions);
  
-    return this.http.post(this._registerURL, body, httpOptions)              
-    .subscribe( this.router.navigate(['login']));
-
+    return this.http.post(this._registerURL, body, httpOptions)    ;
     
   }
 
