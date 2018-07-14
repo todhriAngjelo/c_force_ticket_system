@@ -118,7 +118,7 @@ public class TicketService {
     /////////////////////////////////////////////////////////
     public String reserveTicket(@PathParam("ticket_Id") int t_Id,@PathParam("user_Id") int u_Id) {
         ticketBL.reserveTicket(t_Id,u_Id);
-        return getAllTickets();
+        return getAllAvailableTickets();
     }
     
     /////////////
