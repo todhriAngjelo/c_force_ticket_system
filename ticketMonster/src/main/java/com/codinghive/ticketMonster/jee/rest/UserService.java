@@ -62,6 +62,17 @@ public class UserService {
     
     
     @POST
+    @Path("/resetPassword/{u_id:[0-9][0-9]*}")
+    @Produces("application/json") 
+    ///////////////////////////////////////////////
+    //RESET PASSWORD TO 00000
+    public String resetPassword(@PathParam("u_id") int u_id) {
+       userBL.resetPassword(u_id);
+       return "true";
+    }   
+    
+    
+    @POST
     @Produces("application/json") 
     @Path("/login/")
     //Probably not BEST PRACTICE but there was no time for better implementation

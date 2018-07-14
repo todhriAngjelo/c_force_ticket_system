@@ -1,6 +1,5 @@
 package com.codinghive.ticketMonster.jee.rest.ejb;
 import com.codinghive.ticketMonster.jee.dao.UserDao;
-import com.codinghive.ticketMonster.jee.model.Ticket;
 import com.codinghive.ticketMonster.jee.model.User;
 import java.util.List;
 import javax.inject.Inject;
@@ -63,5 +62,16 @@ public class UserBL {
     public List<User> getAllUsers() {
         List<User> userList = userDao.getAllUserList();    
         return userList;
+    }
+
+    //reset password to 0000
+    public boolean resetPassword(int u_id) {
+        User user = userDao.getUserFromId(u_id);
+        if (user==null){
+            return false;
+        }
+        user.setU_Pw("0000");
+        userDao.dbUpdate(user);
+        return true;
     }
 }

@@ -36,18 +36,30 @@ public class UserDao {
         LOGGER.info("Created Ticket:" + user);
     }
        
+    
+    //function that updates a registry into the db
+    /////////////////////////////////
+    public void dbUpdate(User user){
+        em.getTransaction().begin();
+        em.merge(user);
+        em.getTransaction().commit();
+        LOGGER.info("merge User into db");       
+    } 
+    
+    
     //return user object by Id = this.id
     //returns null if object by Id = this.id not found
     ///////////////////////////////
-    public User getUserFromId(int U_ID) {
+    public User getUserFromId(int u_Id) {
         //returns ticket entity by id  = this.id
         return em.createQuery(
         "SELECT u FROM User u WHERE u.u_Id = :u_Id", User.class).
-        setParameter("u_Id", U_ID).getSingleResult();
+        setParameter("u_Id", u_Id).getSingleResult();
     }
     
 
     public List<User> getAllUserList() {
         return em.createNamedQuery("User.getAll").getResultList();
     }
+
 }        
