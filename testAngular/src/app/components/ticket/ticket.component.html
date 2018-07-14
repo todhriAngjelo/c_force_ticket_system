@@ -1,4 +1,6 @@
 <body>
+    <p-messages class="ui-messages-success" [(value)]="msgs"></p-messages>
+
   <!-- <div class="container"class="center">
     
             <tr *ngFor="let post of _postsArray">
@@ -44,31 +46,27 @@
 
 
   <div class="row" *ngFor="let post of _postsArray">
-      <div class="col-md-4">
-        <img [src]="post.t_urlImage" alt="" class="thumbnail"/>
-        <p>
-          <a class="btn btn-info btn-block" (click)="doPOST(post)" target="_blank">Book Now</a>
-        </p>
-      </div>
-      <div class="col-md-8">
-        <h2>{{post.t_title}}
-          <small class="label label-warning">
-            {{post.t_rating}}
-            <i class="glyphicon glyphicon-star"></i>
-          </small>
-        </h2>
-        <p></p>
-        <h3>Overview</h3>
-        <p>
-          {{post.t_overview}}
-        </p>
-        
-      </div>
+    <div class="col-md-4">
+      <img [src]="post.t_urlImage" alt="" class="thumbnail" />
+      <p>
+        <a class="btn btn-info btn-block" (click)="doPOST(post)" target="_blank">Book Now</a>
+      </p>
     </div>
-    _________________________________________________________________________________________________
+    <div class="col-md-8">
+      <h2>{{post.t_title}}
+        <small class="label label-warning">
+          {{post.t_rating}}
+          <i class="glyphicon glyphicon-star"></i>
+        </small>
+      </h2>
+      <p></p>
+      <h3>Overview</h3>
+      <p>
+        {{post.t_overview}}
+      </p>
 
-  </body>
-  
-        
-        
-  
+    </div>
+  </div>
+  _________________________________________________________________________________________________
+
+</body>

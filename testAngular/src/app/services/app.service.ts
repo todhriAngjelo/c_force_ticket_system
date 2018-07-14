@@ -28,6 +28,7 @@ const httpOptions = {
      private _cancelTicketURL = "http://localhost:8080/home/ticket/ticketRest/cancelReservation";
      private _getAllUsersURL = "http://localhost:8080/home/ticket/userRest/getAllUsers";
      private _getAllTicketsURL = "http://localhost:8080/home/ticket/ticketRest/getAllReservedTickets";
+     private _resetPassURL = "http://localhost:8080/home/ticket/userRest/resetPassword";
 
      public userID;
  
@@ -54,16 +55,15 @@ const httpOptions = {
 
       
 
-  doPOST(ticket: Tickets | number): void{
+  doPOST(ticket: Tickets | number): any{
     const id = typeof ticket === 'number' ? ticket : ticket.t_id;    
     const url = `${this._postUpdateURL}/${id}/${this.userID}`; 
     console.log("POOOOOOOOOOOOOOOOOST");
     console.log(url);
    
-    var m= this.http
+    return this.http
         .post<Tickets>(url, httpOptions)
-        .subscribe(_=> this.load());
-    console.log(m);
+        
 }
 
 //LOGIIIIIIN_______________________________________________________
@@ -125,7 +125,10 @@ registerService(f: Users | string) {
         console.log(body2);
  // var test =this.http.post(this._registerURL, body, httpOptions);
  
-    return this.http.post(this._registerURL, body, httpOptions);
+    return this.http.post(this._registerURL, body, httpOptions)              
+    .subscribe( this.router.navigate(['login']));
+
+    
   }
 
 
@@ -233,7 +236,28 @@ getAllTickets(): Observable<Tickets[]> {
     catchError(this.handleError('getAllTickets', []))
   );
 }
+
 //______________________________________getAllTickets___________________getAllTickets
+
+
+//_____________________________________resetPass___________________resetPass
+
+resetPass(user: Users | number): any{
+  const id = typeof user === 'number' ? user : user.u_Id;    
+  const url = `${this._resetPassURL}/${id}`; 
+  console.log("resetPass in app.service.ts");
+  console.log(url);
+ 
+  return this.http
+      .post<Users>(url, httpOptions)
+      
+}
+
+
+//_____________________________________resetPass___________________resetPass
+
+
+
   /** Log a HeroService message with the MessageService */
    /**
    * Handle Http operation that failed.

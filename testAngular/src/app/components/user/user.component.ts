@@ -41,4 +41,12 @@ getTicketOfUser(): void {
    this.apiService.cancelTicket(ticket) ;     
   };
 
+  resetPassword(user: Users): void {
+    console.log("doPost on ticket.component.ts", user);
+
+    this.apiService.resetPass(user).subscribe(response => {
+        this._userArray = response;
+      });
+};
+
 }

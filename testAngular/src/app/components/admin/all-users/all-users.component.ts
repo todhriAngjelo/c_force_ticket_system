@@ -25,4 +25,12 @@ export class AllUsersComponent implements OnInit {
     this.getUsers();
   }
 
+  resetPassword(user: Users): void {
+    console.log("doPost on ticket.component.ts", user);
+
+    this.apiSerivce.resetPass(user).subscribe(response => {
+        this._postsArray = response;
+      });
+};
+
 }

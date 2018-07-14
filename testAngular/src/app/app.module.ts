@@ -29,6 +29,9 @@ import { GaugeComponent } from "./components/admin/gauge/gauge.component";
 import { GaugeModule } from "./components/admin/gauge";
 import { AllUsersComponent } from './components/admin/all-users/all-users.component';
 import { AllTicketsComponent } from './components/admin/all-tickets/all-tickets.component';
+import { AlertComponent } from './components/alert/alert.component';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 @NgModule({
     declarations: [
@@ -50,7 +53,8 @@ import { AllTicketsComponent } from './components/admin/all-tickets/all-tickets.
         AboutComponent,
         AdminComponent,
         AllUsersComponent,
-        AllTicketsComponent
+        AllTicketsComponent,
+        AlertComponent
     ],
     imports: [
         BrowserModule,
@@ -59,7 +63,9 @@ import { AllTicketsComponent } from './components/admin/all-tickets/all-tickets.
         HttpClientModule,
         JsonpModule,
         AppRoutingModule,
-        GaugeModule
+        GaugeModule,
+        MessageModule,
+        MessagesModule
     ],
     providers: [MoviesService, AppService, AuthService, AuthGuardService],
     bootstrap: [
